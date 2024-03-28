@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ondas_ad/components/video_aula.dart';
 import 'package:ondas_ad/screens/primeiro_ano_screen.dart';
 
+import '../components/constants.dart';
+
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});
 
@@ -25,7 +27,7 @@ class InitialScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: 12,
+                        width: myMargem,
                       ),
                       Text(
                         "Ondas 1.0",
@@ -41,7 +43,7 @@ class InitialScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -51,7 +53,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -61,7 +63,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -71,7 +73,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -91,7 +93,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -101,7 +103,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -111,7 +113,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -120,7 +122,7 @@ class InitialScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          width: 12,
+                          width: myMargem,
                         ),
                       ],
                     ),
@@ -129,7 +131,7 @@ class InitialScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: 12,
+                        width: myMargem,
                       ),
                       Text(
                         "Ondas 2.0",
@@ -145,7 +147,7 @@ class InitialScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -161,7 +163,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -171,7 +173,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -181,7 +183,7 @@ class InitialScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 12, bottom: 12, left: 12),
+                              top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
                             onTap: () {},
                             child: Image.asset(
@@ -190,7 +192,7 @@ class InitialScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          width: 12,
+                          width: myMargem,
                         ),
                       ],
                     ),
