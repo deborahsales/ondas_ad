@@ -16,7 +16,7 @@ class VideoAula extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: myMargem, left: myMargem, bottom: myMargem),
+      padding: const EdgeInsets.only(top: myMargem, left: myMargem, bottom: myMargem, right: myMargem),
       child: SizedBox(
         height: 100,
         child: Row(children: [

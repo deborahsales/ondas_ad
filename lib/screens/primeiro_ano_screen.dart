@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ondas_ad/data/ondas_dao.dart';
-
 import '../components/constants.dart';
 import '../components/video_aula.dart';
 
@@ -57,7 +56,7 @@ class _PrimeiroAnoScreenState extends State<PrimeiroAnoScreen> {
                             width: myMargem,
                           ),
                           Text(
-                            "Ondas 1.0 - 1º ano",
+                            "Ondas 2.0 - 1º ano",
                             style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.bold,
@@ -103,25 +102,74 @@ class _PrimeiroAnoScreenState extends State<PrimeiroAnoScreen> {
                           ),
                         ),
                       ),
-                      const VideoAula(
-                        image: 'assets/images/miniatura_1_ano.png',
-                        titulo: 'Aula 1 - CIE\nAlimentação saudável',
-                        videoId: 'b7Qepod1uQM',
-                      ),
-                      const VideoAula(
-                        image: 'assets/images/miniatura_1_ano.png',
-                        titulo: 'Aula 1 - CIE\nAlimentação saudável',
-                        videoId: 'b7Qepod1uQM',
-                      ),
-                      const VideoAula(
-                        image: 'assets/images/miniatura_1_ano.png',
-                        titulo: 'Aula 1 - CIE\nAlimentação saudável',
-                        videoId: 'b7Qepod1uQM',
-                      ),
-                      const VideoAula(
-                        image: 'assets/images/miniatura_1_ano.png',
-                        titulo: 'Aula 1 - CIE\nAlimentação saudável',
-                        videoId: 'b7Qepod1uQM',
+                      FutureBuilder<List<VideoAula>>(
+                        future: OndasDao().getModuloAno(dropdownValue!, '1 e 2', 'assets/images/miniatura_1_ano.png'),
+                        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                          List<VideoAula>? items = snapshot.data;
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.none:
+                              return const Center(
+                                  child: Column(
+                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                                      padding: EdgeInsets.all(25.0),
+                                      child: Text('Carregando',
+                                          style: TextStyle(fontSize: 20)),
+                                    )],
+                                  ));
+                            case ConnectionState.waiting:
+                              return const Center(
+                                  child: Column(
+                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                                      padding: EdgeInsets.all(25.0),
+                                      child: Text('Carregando',
+                                          style: TextStyle(fontSize: 20)),
+                                    )],
+                                  ));
+                            case ConnectionState.active:
+                              return const Center(
+                                  child: Column(
+                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                                      padding: EdgeInsets.all(25.0),
+                                      child: Text('Carregando',
+                                          style: TextStyle(fontSize: 20)),
+                                    )],
+                                  ));
+                            case ConnectionState.done:
+                              if (snapshot.hasData && items != null) {
+                                if (items.isNotEmpty) {
+                                  return SizedBox(
+                                    height: MediaQuery.of(context).size.height * 0.45,
+                                    child: ListView.builder(
+                                        itemCount: items.length,
+                                        itemBuilder: (BuildContext context, int index) {
+                                          final VideoAula resultado = items[index];
+                                          return resultado;
+                                        }),
+                                  );
+                                }
+                                return const Center(
+                                  child: Column(
+                                    children: [
+                                      Icon(Icons.error_outline, size: 110),
+                                      Text('Não há nenhum resultado',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(fontSize: 28))
+                                    ],
+                                  ),
+                                );
+                              }
+                              return const Center(
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.report_gmailerrorred, size: 110),
+                                    Text('Erro ao carregar resultados',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 28)),
+                                  ],
+                                ),
+                              );
+                          }
+                        },
                       ),
                     ],
                   ),

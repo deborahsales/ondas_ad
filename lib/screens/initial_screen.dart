@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ondas_ad/components/video_aula.dart';
 import 'package:ondas_ad/screens/primeiro_ano_screen.dart';
 
 import '../components/constants.dart';
