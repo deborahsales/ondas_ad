@@ -5,7 +5,7 @@ import 'package:ondas_ad/screens/initial_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // OndasDao().insertDataFromCSV();
+  OndasDao().insertDataFromCSV();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }

@@ -3,9 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import '../components/video_aula.dart';
 import 'database.dart';
-
 import 'dart:async';
-import 'dart:io';
 
 class OndasDao {
   static const String tableSql = ' CREATE TABLE $_tableName('
@@ -41,7 +39,6 @@ class OndasDao {
     await database.close();
   }
 
-
   Future<List<VideoAula>> getModuloAno(
       String modulo, String ano, String image) async {
     final Database bancoDeDados = await getDatabase();
@@ -54,8 +51,11 @@ class OndasDao {
 
   save(String modulo, String ano, String titulo, String videoId) async {
     final Database bancoDeDados = await getDatabase();
+    var itemExists = await getModuloAno(modulo, ano, '');
     Map<String, dynamic> videosMap = toMap(modulo, ano, titulo, videoId);
-    return await bancoDeDados.insert(_tableName, videosMap);
+    if (itemExists.isNotEmpty) {
+      return await bancoDeDados.insert(_tableName, videosMap);
+    }
   }
 
   Map<String, dynamic> toMap(String modulo, String ano, String titulo, String videoId){
