@@ -26,6 +26,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         enableCaption: false,
         isLive: false,
         forceHD: false,
+        showLiveFullscreenButton: false,
+        hideControls: true,
       ),
     );
   }

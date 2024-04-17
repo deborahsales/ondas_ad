@@ -22,19 +22,21 @@ class OndasDao {
     final String csvString = await rootBundle.loadString('assets/ondas_bd.csv');
     final List<List<dynamic>> csvData = const CsvToListConverter().convert(csvString);
     final Database database = await getDatabase();
+    var itemExists = await getModuloAno('Módulo 01', '1 e 2', '');
 
-    await database.transaction((txn) async {
-      for (final row in csvData) {
-        final Map<String, dynamic> videoMap = {
-          _ano: row[0],
-          _modulo: row[1],
-          _titulo: row[2],
-          _videoId: row[3],
-        };
-        await txn.insert(_tableName, videoMap);
-      }
-    });
-
+    if (itemExists.isEmpty) {
+      await database.transaction((txn) async {
+        for (final row in csvData) {
+          final Map<String, dynamic> videoMap = {
+            _ano: row[0],
+            _modulo: row[1],
+            _titulo: row[2],
+            _videoId: row[3],
+          };
+          await txn.insert(_tableName, videoMap);
+        }
+      });
+    }
     await database.close();
   }
 
@@ -46,24 +48,6 @@ class OndasDao {
         where: '$_ano = ? AND $_modulo = ?',
         whereArgs: [ano, modulo]);
     return toList(result, image);
-  }
-
-  save(String modulo, String ano, String titulo, String videoId) async {
-    final Database bancoDeDados = await getDatabase();
-    var itemExists = await getModuloAno(modulo, ano, '');
-    Map<String, dynamic> videosMap = toMap(modulo, ano, titulo, videoId);
-    if (itemExists.isNotEmpty) {
-      return await bancoDeDados.insert(_tableName, videosMap);
-    }
-  }
-
-  Map<String, dynamic> toMap(String modulo, String ano, String titulo, String videoId){
-    final Map<String, dynamic> mapaDeVideos = {};
-    mapaDeVideos[_ano] = ano;
-    mapaDeVideos[_modulo] = modulo;
-    mapaDeVideos[_titulo] = titulo;
-    mapaDeVideos[_videoId] = videoId;
-    return mapaDeVideos;
   }
 
   List<VideoAula> toList(
