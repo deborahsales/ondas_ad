@@ -20,8 +20,7 @@ class OndasDao {
 
   Future<void> insertDataFromCSV() async {
     final String csvString = await rootBundle.loadString('assets/ondas_bd.csv');
-    final List<List<dynamic>> csvData = CsvToListConverter().convert(csvString);
-    print(csvData);
+    final List<List<dynamic>> csvData = const CsvToListConverter().convert(csvString);
     final Database database = await getDatabase();
 
     await database.transaction((txn) async {

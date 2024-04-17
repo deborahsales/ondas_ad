@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ondas_ad/screens/primeiro_ano_screen.dart';
-
+import 'package:ondas_ad/screens/ondas_dois_screen.dart';
 import '../components/constants.dart';
 
 class InitialScreen extends StatelessWidget {
@@ -153,10 +152,14 @@ class InitialScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const PrimeiroAnoScreen()));
+                                          const OndasDoisScreen(
+                                            imgTopo:
+                                                'assets/images/topo_ondas_1_e_2.png',
+                                            ano: '1 e 2', miniatura: 'assets/images/miniatura_1_e_2_ano.png',
+                                          )));
                             },
                             child: Image.asset(
-                              'assets/images/ondas_2_1_ano.png',
+                              'assets/images/ondas_2_1_e_2_ano.png',
                             ),
                           ),
                         ),
@@ -164,19 +167,39 @@ class InitialScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
-                            onTap: () {},
-                            child: Image.asset(
-                              'assets/images/ondas_2_2_ano.png',
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: myMargem, bottom: myMargem, left: myMargem),
-                          child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const OndasDoisScreen(
+                                        imgTopo:
+                                        'assets/images/topo_ondas_3.png',
+                                        ano: '3', miniatura: 'assets/images/miniatura_3_ano.png',
+                                      )));
+                            },
                             child: Image.asset(
                               'assets/images/ondas_2_3_ano.png',
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: myMargem, bottom: myMargem, left: myMargem),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const OndasDoisScreen(
+                                        imgTopo:
+                                        'assets/images/topo_ondas_4_e_5.png',
+                                        ano: '4 e 5', miniatura: 'assets/images/miniatura_4_e_5_ano.png',
+                                      )));
+                            },
+                            child: Image.asset(
+                              'assets/images/ondas_2_4_e_5_ano.png',
                             ),
                           ),
                         ),

@@ -3,16 +3,22 @@ import 'package:ondas_ad/data/ondas_dao.dart';
 import '../components/constants.dart';
 import '../components/video_aula.dart';
 
-class PrimeiroAnoScreen extends StatefulWidget {
-  const PrimeiroAnoScreen({super.key});
+class OndasDoisScreen extends StatefulWidget {
+  final String imgTopo;
+  final String ano;
+  final String miniatura;
+
+
+  const OndasDoisScreen({super.key, required this.imgTopo, required this.ano, required this.miniatura});
 
   @override
-  State<PrimeiroAnoScreen> createState() => _PrimeiroAnoScreenState();
+  State<OndasDoisScreen> createState() => _OndasDoisScreenState();
 }
 
-class _PrimeiroAnoScreenState extends State<PrimeiroAnoScreen> {
+class _OndasDoisScreenState extends State<OndasDoisScreen> {
   String? dropdownValue = OndasDao.moduloList.first;
   bool _buscar = false;
+  String anoFormatado = "";
 
   void _atualizarBusca() {
     setState(() {
@@ -30,7 +36,7 @@ class _PrimeiroAnoScreenState extends State<PrimeiroAnoScreen> {
               Stack(
                 children: [
                   Image.asset(
-                    'assets/images/topo_ondas_2.png',
+                    widget.imgTopo,
                   ),
                   IconButton(
                     icon: Icon(
@@ -49,15 +55,15 @@ class _PrimeiroAnoScreenState extends State<PrimeiroAnoScreen> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.38,
                       ),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: myMargem,
                           ),
                           Text(
-                            "Ondas 2.0 - 1º ano",
-                            style: TextStyle(
+                            "Ondas 2.0 - ${widget.ano.length == 1 ? widget.ano : "${widget.ano[0]}º${widget.ano.substring(1)}"}º ano",
+                            style: const TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.bold,
                             ),
@@ -103,7 +109,7 @@ class _PrimeiroAnoScreenState extends State<PrimeiroAnoScreen> {
                         ),
                       ),
                       FutureBuilder<List<VideoAula>>(
-                        future: OndasDao().getModuloAno(dropdownValue!, '1 e 2', 'assets/images/miniatura_1_ano.png'),
+                        future: OndasDao().getModuloAno(dropdownValue!, widget.ano, widget.miniatura),
                         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                           List<VideoAula>? items = snapshot.data;
                           switch (snapshot.connectionState) {
