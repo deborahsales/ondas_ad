@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:ondas_ad/components/podcast.dart';
 import 'package:ondas_ad/data/ondas_dao.dart';
 import '../components/constants.dart';
+import '../components/video_aula.dart';
 
-class OndasUmScreen extends StatefulWidget {
+class OndasVideoScreen extends StatefulWidget {
   final String imgTopo;
-  final String modulo;
+  final String ano;
   final String miniatura;
 
-  const OndasUmScreen({super.key, required this.imgTopo, required this.modulo, required this.miniatura});
+
+  const OndasVideoScreen({super.key, required this.imgTopo, required this.ano, required this.miniatura});
 
   @override
-  State<OndasUmScreen> createState() => _OndasUmScreenState();
+  State<OndasVideoScreen> createState() => _OndasVideoScreenState();
 }
 
-class _OndasUmScreenState extends State<OndasUmScreen> {
+class _OndasVideoScreenState extends State<OndasVideoScreen> {
+  String? dropdownValue = OndasDao.moduloList.first;
+  bool _buscar = false;
+  String anoFormatado = "";
+
+  void _atualizarBusca() {
+    setState(() {
+      _buscar = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +62,7 @@ class _OndasUmScreenState extends State<OndasUmScreen> {
                             width: myMargem,
                           ),
                           Text(
-                            "Ondas 1.0 - ${widget.modulo}",
+                            "Ondas 2.0 - ${widget.ano.length == 1 ? widget.ano : "${widget.ano[0]}º${widget.ano.substring(1)}"}º ano",
                             style: const TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.bold,
@@ -60,10 +70,48 @@ class _OndasUmScreenState extends State<OndasUmScreen> {
                           ),
                         ],
                       ),
-                      FutureBuilder<List<Podcast>>(
-                        future: OndasDao().getPodcast('1.0', widget.modulo, widget.miniatura),
+                      Padding(
+                        padding: const EdgeInsets.all(myMargem),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          height: MediaQuery.of(context).size.width * 0.1,
+                          decoration: BoxDecoration(
+                            color: myGray,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 15, top: 8, bottom: 8, right: 8),
+                            child: DropdownButton(
+                              value: dropdownValue,
+                              icon:
+                                  const Icon(Icons.keyboard_arrow_down_rounded),
+                              isExpanded: true,
+                              underline: Container(),
+                              style: const TextStyle(
+                                  fontSize: 20, color: Colors.black),
+                              items: OndasDao.moduloList.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (String? selectedValue) {
+                                setState(
+                                  () {
+                                    dropdownValue = selectedValue;
+                                    _atualizarBusca();
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      FutureBuilder<List<VideoAula>>(
+                        future: OndasDao().getModuloAno(dropdownValue!, widget.ano, widget.miniatura),
                         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                          List<Podcast>? items = snapshot.data;
+                          List<VideoAula>? items = snapshot.data;
                           switch (snapshot.connectionState) {
                             case ConnectionState.none:
                               return const Center(
@@ -96,11 +144,11 @@ class _OndasUmScreenState extends State<OndasUmScreen> {
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: MediaQuery.of(context).size.height * 0.53,
+                                    height: MediaQuery.of(context).size.height * 0.45,
                                     child: ListView.builder(
                                         itemCount: items.length,
                                         itemBuilder: (BuildContext context, int index) {
-                                          final Podcast resultado = items[index];
+                                          final VideoAula resultado = items[index];
                                           return resultado;
                                         }),
                                   );

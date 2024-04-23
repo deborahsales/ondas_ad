@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:ondas_ad/components/podcast.dart';
 import 'package:ondas_ad/data/ondas_dao.dart';
 import '../components/constants.dart';
-import '../components/video_aula.dart';
 
-class OndasDoisScreen extends StatefulWidget {
+class OndasHistScreen extends StatefulWidget {
   final String imgTopo;
-  final String ano;
   final String miniatura;
+  final String ano;
+  final String versao;
 
-
-  const OndasDoisScreen({super.key, required this.imgTopo, required this.ano, required this.miniatura});
+  const OndasHistScreen({super.key, required this.imgTopo, required this.miniatura, required this.ano, required this.versao});
 
   @override
-  State<OndasDoisScreen> createState() => _OndasDoisScreenState();
+  State<OndasHistScreen> createState() => _OndasHistScreen();
 }
 
-class _OndasDoisScreenState extends State<OndasDoisScreen> {
+class _OndasHistScreen extends State<OndasHistScreen> {
   String? dropdownValue = OndasDao.moduloList.first;
   bool _buscar = false;
-  String anoFormatado = "";
 
   void _atualizarBusca() {
     setState(() {
       _buscar = true;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +61,15 @@ class _OndasDoisScreenState extends State<OndasDoisScreen> {
                           const SizedBox(
                             width: myMargem,
                           ),
-                          Text(
-                            "Ondas 2.0 - ${widget.ano.length == 1 ? widget.ano : "${widget.ano[0]}º${widget.ano.substring(1)}"}º ano",
-                            style: const TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: Text(
+                              "Ondas ${widget.versao}\nHistórias ao pé do ouvido",
+                              style: const TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
                             ),
                           ),
                         ],
@@ -85,7 +89,7 @@ class _OndasDoisScreenState extends State<OndasDoisScreen> {
                             child: DropdownButton(
                               value: dropdownValue,
                               icon:
-                                  const Icon(Icons.keyboard_arrow_down_rounded),
+                              const Icon(Icons.keyboard_arrow_down_rounded),
                               isExpanded: true,
                               underline: Container(),
                               style: const TextStyle(
@@ -98,7 +102,7 @@ class _OndasDoisScreenState extends State<OndasDoisScreen> {
                               }).toList(),
                               onChanged: (String? selectedValue) {
                                 setState(
-                                  () {
+                                      () {
                                     dropdownValue = selectedValue;
                                     _atualizarBusca();
                                   },
@@ -108,10 +112,10 @@ class _OndasDoisScreenState extends State<OndasDoisScreen> {
                           ),
                         ),
                       ),
-                      FutureBuilder<List<VideoAula>>(
-                        future: OndasDao().getModuloAno(dropdownValue!, widget.ano, widget.miniatura),
+                      FutureBuilder<List<Podcast>>(
+                        future: OndasDao().getPodcast(widget.versao, widget.ano, dropdownValue!, widget.miniatura),
                         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                          List<VideoAula>? items = snapshot.data;
+                          List<Podcast>? items = snapshot.data;
                           switch (snapshot.connectionState) {
                             case ConnectionState.none:
                               return const Center(
@@ -144,11 +148,11 @@ class _OndasDoisScreenState extends State<OndasDoisScreen> {
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: MediaQuery.of(context).size.height * 0.45,
+                                    height: MediaQuery.of(context).size.height * 0.40,
                                     child: ListView.builder(
                                         itemCount: items.length,
                                         itemBuilder: (BuildContext context, int index) {
-                                          final VideoAula resultado = items[index];
+                                          final Podcast resultado = items[index];
                                           return resultado;
                                         }),
                                   );

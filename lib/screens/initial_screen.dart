@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ondas_ad/screens/ondas_dois_screen.dart';
-import 'package:ondas_ad/screens/ondas_um_screen.dart';
+import 'package:ondas_ad/screens/ondas_podcast_screen.dart';
 import '../components/constants.dart';
+import 'ondas_hist_screen.dart';
+import 'ondas_video_screen..dart';
 
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});
@@ -48,12 +49,14 @@ class InitialScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OndasUmScreen(
-                                        imgTopo:
-                                            'assets/images/topo_modulos_1_4_7.png',
-                                        modulo: 'Módulo 01',
-                                        miniatura:
-                                            'assets/images/capa_podcast_1_4_7.png'),
+                                    builder: (context) => const OndasPodcastScreen(
+                                      imgTopo:
+                                          'assets/images/topo_modulos_1_4_7.png',
+                                      modulo: 'Módulo 01',
+                                      miniatura:
+                                          'assets/images/capa_podcast_1_4_7.png',
+                                      versao: '1.0',
+                                    ),
                                   ));
                             },
                             child: Image.asset(
@@ -69,12 +72,14 @@ class InitialScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OndasUmScreen(
-                                        imgTopo:
-                                        'assets/images/topo_modulos_2_5_8.png',
-                                        modulo: 'Módulo 02',
-                                        miniatura:
-                                        'assets/images/capa_podcast_2_5_8.png'),
+                                    builder: (context) => const OndasPodcastScreen(
+                                      imgTopo:
+                                          'assets/images/topo_modulos_2_5_8.png',
+                                      modulo: 'Módulo 02',
+                                      miniatura:
+                                          'assets/images/capa_podcast_2_5_8.png',
+                                      versao: '1.0',
+                                    ),
                                   ));
                             },
                             child: Image.asset(
@@ -90,12 +95,14 @@ class InitialScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OndasUmScreen(
-                                        imgTopo:
-                                        'assets/images/topo_modulos_3_6.png',
-                                        modulo: 'Módulo 03',
-                                        miniatura:
-                                        'assets/images/capa_podcast_3_6.png'),
+                                    builder: (context) => const OndasPodcastScreen(
+                                      imgTopo:
+                                          'assets/images/topo_modulos_3_6.png',
+                                      modulo: 'Módulo 03',
+                                      miniatura:
+                                          'assets/images/capa_podcast_3_6.png',
+                                      versao: '1.0',
+                                    ),
                                   ));
                             },
                             child: Image.asset(
@@ -111,12 +118,14 @@ class InitialScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OndasUmScreen(
-                                        imgTopo:
-                                        'assets/images/topo_modulos_1_4_7.png',
-                                        modulo: 'Módulo 04',
-                                        miniatura:
-                                        'assets/images/capa_podcast_1_4_7.png'),
+                                    builder: (context) => const OndasPodcastScreen(
+                                      imgTopo:
+                                          'assets/images/topo_modulos_1_4_7.png',
+                                      modulo: 'Módulo 04',
+                                      miniatura:
+                                          'assets/images/capa_podcast_1_4_7.png',
+                                      versao: '1.0',
+                                    ),
                                   ));
                             },
                             child: Image.asset(
@@ -132,12 +141,14 @@ class InitialScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OndasUmScreen(
-                                        imgTopo:
-                                        'assets/images/topo_modulos_2_5_8.png',
-                                        modulo: 'Módulo 05',
-                                        miniatura:
-                                        'assets/images/capa_podcast_2_5_8.png'),
+                                    builder: (context) => const OndasPodcastScreen(
+                                      imgTopo:
+                                          'assets/images/topo_modulos_2_5_8.png',
+                                      modulo: 'Módulo 05',
+                                      miniatura:
+                                          'assets/images/capa_podcast_2_5_8.png',
+                                      versao: '1.0',
+                                    ),
                                   ));
                             },
                             child: Image.asset(
@@ -153,12 +164,14 @@ class InitialScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OndasUmScreen(
-                                        imgTopo:
-                                        'assets/images/topo_modulos_3_6.png',
-                                        modulo: 'Módulo 06',
-                                        miniatura:
-                                        'assets/images/capa_podcast_3_6.png'),
+                                    builder: (context) => const OndasPodcastScreen(
+                                      imgTopo:
+                                          'assets/images/topo_modulos_3_6.png',
+                                      modulo: 'Módulo 06',
+                                      miniatura:
+                                          'assets/images/capa_podcast_3_6.png',
+                                      versao: '1.0',
+                                    ),
                                   ));
                             },
                             child: Image.asset(
@@ -174,12 +187,14 @@ class InitialScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OndasUmScreen(
-                                        imgTopo:
-                                        'assets/images/topo_modulos_1_4_7.png',
-                                        modulo: 'Módulo 07',
-                                        miniatura:
-                                        'assets/images/capa_podcast_1_4_7.png'),
+                                    builder: (context) => const OndasPodcastScreen(
+                                      imgTopo:
+                                          'assets/images/topo_modulos_1_4_7.png',
+                                      modulo: 'Módulo 07',
+                                      miniatura:
+                                          'assets/images/capa_podcast_1_4_7.png',
+                                      versao: '1.0',
+                                    ),
                                   ));
                             },
                             child: Image.asset(
@@ -195,12 +210,14 @@ class InitialScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OndasUmScreen(
-                                        imgTopo:
-                                        'assets/images/topo_modulos_2_5_8.png',
-                                        modulo: 'Módulo 08',
-                                        miniatura:
-                                        'assets/images/capa_podcast_2_5_8.png'),
+                                    builder: (context) => const OndasPodcastScreen(
+                                      imgTopo:
+                                          'assets/images/topo_modulos_2_5_8.png',
+                                      modulo: 'Módulo 08',
+                                      miniatura:
+                                          'assets/images/capa_podcast_2_5_8.png',
+                                      versao: '1.0',
+                                    ),
                                   ));
                             },
                             child: Image.asset(
@@ -241,7 +258,7 @@ class InitialScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const OndasDoisScreen(
+                                          const OndasVideoScreen(
                                             imgTopo:
                                                 'assets/images/topo_ondas_1_e_2.png',
                                             ano: '1 e 2',
@@ -263,7 +280,7 @@ class InitialScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const OndasDoisScreen(
+                                          const OndasVideoScreen(
                                             imgTopo:
                                                 'assets/images/topo_ondas_3.png',
                                             ano: '3',
@@ -285,7 +302,7 @@ class InitialScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const OndasDoisScreen(
+                                          const OndasVideoScreen(
                                             imgTopo:
                                                 'assets/images/topo_ondas_4_e_5.png',
                                             ano: '4 e 5',
@@ -302,7 +319,20 @@ class InitialScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const OndasHistScreen(
+                                      imgTopo:
+                                      'assets/images/topo_historias.png',
+                                      miniatura:
+                                      'assets/images/capa_historias.png',
+                                      ano: 'hist',
+                                      versao: '2.0',
+                                    ),
+                                  ));
+                            },
                             child: Image.asset(
                               'assets/images/ondas_2_historias.png',
                             ),

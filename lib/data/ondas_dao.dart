@@ -62,12 +62,12 @@ class OndasDao {
   }
 
   Future<List<Podcast>> getPodcast(
-      String versao, String modulo, String image) async {
+      String versao, String ano, String modulo, String image) async {
     final Database bancoDeDados = await getDatabase();
     final List<Map<String, dynamic>> result = await bancoDeDados.query(
         _tableName,
-        where: '$_versao = ? AND $_tipo = ? AND $_modulo = ?',
-        whereArgs: [versao, 'podcast', modulo]);
+        where: '$_versao = ? AND $_ano = ? AND $_tipo = ? AND $_modulo = ?',
+        whereArgs: [versao, ano, 'podcast', modulo]);
     return toListPodcast(result, image);
   }
 
