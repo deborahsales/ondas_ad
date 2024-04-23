@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ondas_ad/screens/ondas_dois_screen.dart';
+import 'package:ondas_ad/screens/podcast_screen.dart';
 import '../components/constants.dart';
 
 class InitialScreen extends StatelessWidget {
@@ -43,7 +44,13 @@ class InitialScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               top: myMargem, bottom: myMargem, left: myMargem),
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PodcastScreen(image: 'assets/images/capa_podcast_1.png', titulo: 'Aula 1 - CIE - Higienização dos alimentos', podcastLink: 'https://drive.usercontent.google.com/u/0/uc?id=1qvGSbtEZhEwloawXf3YAAUoZgOaw5vH4&export=download',),));
+                            },
                             child: Image.asset(
                               'assets/images/ondas_1_modulo_1.png',
                             ),

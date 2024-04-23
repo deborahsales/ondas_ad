@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:ondas_ad/data/ondas_dao.dart';
 import 'package:ondas_ad/screens/initial_screen.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   OndasDao().insertDataFromCSV();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
