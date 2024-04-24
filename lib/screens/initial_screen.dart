@@ -88,8 +88,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_1_modulo_1.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_1_modulo_1.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -114,8 +118,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_1_modulo_2.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_1_modulo_2.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -140,8 +148,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_1_modulo_3.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_1_modulo_3.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -166,8 +178,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_1_modulo_4.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_1_modulo_4.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -190,8 +206,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_1_modulo_5.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_1_modulo_5.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -216,8 +236,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_1_modulo_6.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_1_modulo_6.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -242,8 +266,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_1_modulo_7.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_1_modulo_7.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -268,8 +296,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_1_modulo_8.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_1_modulo_8.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -316,8 +348,12 @@ class InitialScreen extends StatelessWidget {
                                                     'assets/images/miniatura_1_e_2_ano.png',
                                               )));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_2_1_e_2_ano.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_2_1_e_2_ano.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -340,8 +376,12 @@ class InitialScreen extends StatelessWidget {
                                                     'assets/images/miniatura_3_ano.png',
                                               )));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_2_3_ano.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_2_3_ano.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -364,8 +404,12 @@ class InitialScreen extends StatelessWidget {
                                                     'assets/images/miniatura_4_e_5_ano.png',
                                               )));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_2_4_e_5_ano.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_2_4_e_5_ano.png',
+                                  ),
                                 ),
                               ),
                             ),
@@ -390,8 +434,12 @@ class InitialScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                child: Image.asset(
-                                  'assets/images/ondas_2_historias.png',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * 0.02),
+                                  child: Image.asset(
+                                    'assets/images/ondas_2_historias.png',
+                                  ),
                                 ),
                               ),
                             ),

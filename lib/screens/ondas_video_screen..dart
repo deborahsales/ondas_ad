@@ -32,6 +32,7 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     double aspectRatio = 1953.0 / 2418.0;
     double proportionalImageHeight = screenWidth * aspectRatio;
 
@@ -193,8 +194,7 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.45,
+                                    height: screenHeight - proportionalImageHeight - (screenHeight * 0.15),
                                     child: ListView.builder(
                                         itemCount: items.length,
                                         itemBuilder:

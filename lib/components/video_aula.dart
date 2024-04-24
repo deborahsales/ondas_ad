@@ -16,14 +16,19 @@ class VideoAula extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: myMargem, left: myMargem, bottom: myMargem, right: myMargem),
+      padding:
+          const EdgeInsets.only(top: myMargem, left: myMargem, right: myMargem),
       child: SizedBox(
         height: 100,
         child: Row(children: [
           Stack(alignment: Alignment.center, children: [
-            Image.asset(
-              image,
-              width: 180,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(
+                  MediaQuery.of(context).size.width * 0.015),
+              child: Image.asset(
+                image,
+                width: 180,
+              ),
             ),
             IconButton(
                 onPressed: () {

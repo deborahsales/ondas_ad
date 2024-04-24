@@ -36,18 +36,18 @@ class _PodcastScreenState extends State<PodcastScreen> {
     await session.configure(const AudioSessionConfiguration.speech());
     audioPlayer.playbackEventStream.listen((event) {},
         onError: (Object e, StackTrace stackTrace) {
-          showSnackBar(
-            context: context,
-            mensagem: 'A stream error occurred: $e',
-          );
+      showSnackBar(
+        context: context,
+        mensagem: 'A stream error occurred: $e',
+      );
     });
-      await audioPlayer
-          .setAudioSource(AudioSource.uri(Uri.parse(widget.podcastLink)));
+    await audioPlayer
+        .setAudioSource(AudioSource.uri(Uri.parse(widget.podcastLink)));
   }
 
   Future<void> _initAudioSession() async {
     session = await AudioSession.instance;
-      await session.configure(const AudioSessionConfiguration.speech());
+    await session.configure(const AudioSessionConfiguration.speech());
   }
 
   @override
@@ -93,7 +93,8 @@ class _PodcastScreenState extends State<PodcastScreen> {
             height: MediaQuery.of(context).size.height * 0.4,
             width: MediaQuery.of(context).size.width * 0.8,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(
+                  MediaQuery.of(context).size.width * 0.04),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -104,7 +105,8 @@ class _PodcastScreenState extends State<PodcastScreen> {
               ],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(
+                  MediaQuery.of(context).size.width * 0.04),
               child: Image.asset(
                 widget.image,
                 fit: BoxFit.cover,
@@ -139,7 +141,8 @@ class _PodcastScreenState extends State<PodcastScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height * 0.05),
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.height * 0.05),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -159,7 +162,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
                   if (isPlaying) {
                     await audioPlayer.pause();
                   } else {
-                      await audioPlayer.play();
+                    await audioPlayer.play();
                   }
                 },
               ))

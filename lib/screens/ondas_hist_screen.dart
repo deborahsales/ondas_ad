@@ -33,6 +33,7 @@ class _OndasHistScreen extends State<OndasHistScreen> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     double aspectRatio = 1953.0 / 2418.0;
     double proportionalImageHeight = screenWidth * aspectRatio;
 
@@ -198,8 +199,7 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.40,
+                                    height: screenHeight - proportionalImageHeight - (screenHeight * 0.2),
                                     child: ListView.builder(
                                         itemCount: items.length,
                                         itemBuilder:
