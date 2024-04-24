@@ -115,15 +115,16 @@ class _PodcastScreenState extends State<PodcastScreen> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.05,
+              top: MediaQuery.of(context).size.height * 0.02,
               left: MediaQuery.of(context).size.height * 0.05,
               right: MediaQuery.of(context).size.height * 0.05,
             ),
             child: Text(widget.titulo,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.height * 0.03),
+                  fontSize: MediaQuery.of(context).size.height * 0.029,
+                ),
                 overflow: TextOverflow.ellipsis,
-                maxLines: 3),
+                maxLines: 4),
           ),
           Padding(
             padding: EdgeInsets.only(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ondas_ad/components/constants.dart';
-import 'package:ondas_ad/screens/video_play.dart';
+import 'package:ondas_ad/screens/video_play_screen.dart';
 
 class VideoAula extends StatelessWidget {
   final String image;
@@ -17,7 +17,7 @@ class VideoAula extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          const EdgeInsets.only(top: myMargem, left: myMargem, right: myMargem),
+          EdgeInsets.only(bottom: myMargem, left: myMargem, right: myMargem),
       child: SizedBox(
         height: 100,
         child: Row(children: [
@@ -46,7 +46,7 @@ class VideoAula extends StatelessWidget {
           ]),
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.only(left: myMargem),
+            padding: EdgeInsets.only(left: myMargem),
             child: Text(
               titulo,
               style: const TextStyle(

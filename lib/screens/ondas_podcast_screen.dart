@@ -77,20 +77,23 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                       SizedBox(
                         height: proportionalImageHeight * 0.90,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            width: myMargem,
-                          ),
-                          Text(
-                            "Ondas ${widget.versao} - ${widget.modulo}",
-                            style: const TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
+                      Padding(
+                        padding: EdgeInsets.only(bottom: myMargem),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: myMargem,
                             ),
-                          ),
-                        ],
+                            Text(
+                              "Ondas ${widget.versao} - ${widget.modulo}",
+                              style: TextStyle(
+                                fontSize: screenHeight * 0.03,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       FutureBuilder<List<Podcast>>(
                         future: OndasDao().getPodcast(
@@ -148,7 +151,9 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: screenHeight - proportionalImageHeight - (screenHeight * 0.05),
+                                    height: screenHeight -
+                                        proportionalImageHeight -
+                                        (screenHeight * 0.07),
                                     child: ListView.builder(
                                         itemCount: items.length,
                                         itemBuilder:

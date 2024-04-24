@@ -88,20 +88,24 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const SizedBox(
+                          SizedBox(
                             width: myMargem,
                           ),
                           Text(
                             "Ondas 2.0 - ${widget.ano.length == 1 ? widget.ano : "${widget.ano[0]}º${widget.ano.substring(1)}"}º ano",
-                            style: const TextStyle(
-                              fontSize: 26,
+                            style: TextStyle(
+                              fontSize: screenHeight * 0.03,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(myMargem),
+                        padding: EdgeInsets.only(
+                          left: myMargem,
+                          top: myMargem2,
+                          bottom: myMargem,
+                        ),
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.45,
                           height: MediaQuery.of(context).size.width * 0.1,
@@ -110,16 +114,19 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, top: 8, bottom: 8, right: 8),
+                            padding: EdgeInsets.only(
+                                left: myMargem,
+                                top: myMargem2,
+                                bottom: myMargem2,
+                                right: myMargem2),
                             child: DropdownButton(
                               value: dropdownValue,
                               icon:
                                   const Icon(Icons.keyboard_arrow_down_rounded),
                               isExpanded: true,
                               underline: Container(),
-                              style: const TextStyle(
-                                  fontSize: 20, color: Colors.black),
+                              style: TextStyle(
+                                  fontSize: screenHeight * 0.023, color: Colors.black),
                               items: OndasDao.moduloList.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
@@ -194,7 +201,9 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: screenHeight - proportionalImageHeight - (screenHeight * 0.15),
+                                    height: screenHeight -
+                                        proportionalImageHeight -
+                                        (screenHeight * 0.12),
                                     child: ListView.builder(
                                         itemCount: items.length,
                                         itemBuilder:

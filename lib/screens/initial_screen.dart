@@ -10,6 +10,7 @@ class InitialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     double aspectRatio = 2068.0 / 1748.0;
     double proportionalImageHeight = screenWidth * aspectRatio;
 
@@ -49,7 +50,7 @@ class InitialScreen extends StatelessWidget {
                       SizedBox(
                         height: proportionalImageHeight * 0.90,
                       ),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(
@@ -58,19 +59,19 @@ class InitialScreen extends StatelessWidget {
                           Text(
                             "Ondas 1.0",
                             style: TextStyle(
-                                fontSize: 26, fontWeight: FontWeight.bold),
+                                fontSize: screenHeight * 0.03, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: 185,
+                        height: proportionalImageHeight * 0.4,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
-                                  bottom: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
                                   left: myMargem),
                               child: InkWell(
                                 onTap: () {
@@ -98,9 +99,9 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
-                                  bottom: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
                                   left: myMargem),
                               child: InkWell(
                                 onTap: () {
@@ -128,9 +129,9 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
-                                  bottom: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
                                   left: myMargem),
                               child: InkWell(
                                 onTap: () {
@@ -158,9 +159,9 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
-                                  bottom: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
                                   left: myMargem),
                               child: InkWell(
                                 onTap: () {
@@ -188,8 +189,10 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 12, bottom: 12, left: 12),
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
+                                  left: myMargem),
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
@@ -216,9 +219,9 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
-                                  bottom: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
                                   left: myMargem),
                               child: InkWell(
                                 onTap: () {
@@ -246,9 +249,9 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
-                                  bottom: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
                                   left: myMargem),
                               child: InkWell(
                                 onTap: () {
@@ -276,9 +279,9 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
-                                  bottom: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
                                   left: myMargem),
                               child: InkWell(
                                 onTap: () {
@@ -305,13 +308,13 @@ class InitialScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const SizedBox(
+                            SizedBox(
                               width: myMargem,
                             ),
                           ],
                         ),
                       ),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(
@@ -320,18 +323,18 @@ class InitialScreen extends StatelessWidget {
                           Text(
                             "Ondas 2.0",
                             style: TextStyle(
-                                fontSize: 26, fontWeight: FontWeight.bold),
+                                fontSize: screenHeight * 0.03, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: 185,
+                        height: proportionalImageHeight * 0.4,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
                                   bottom: myMargem,
                                   left: myMargem),
                               child: InkWell(
@@ -358,8 +361,8 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
                                   bottom: myMargem,
                                   left: myMargem),
                               child: InkWell(
@@ -386,8 +389,8 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
                                   bottom: myMargem,
                                   left: myMargem),
                               child: InkWell(
@@ -414,8 +417,8 @@ class InitialScreen extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  top: myMargem,
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
                                   bottom: myMargem,
                                   left: myMargem),
                               child: InkWell(
@@ -443,7 +446,7 @@ class InitialScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const SizedBox(
+                            SizedBox(
                               width: myMargem,
                             ),
                           ],

@@ -17,7 +17,7 @@ class Podcast extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          const EdgeInsets.only(top: myMargem, left: myMargem, right: myMargem),
+          EdgeInsets.only(bottom: myMargem, left: myMargem, right: myMargem),
       child: SizedBox(
         height: 100,
         child: Row(children: [
@@ -48,7 +48,7 @@ class Podcast extends StatelessWidget {
           ]),
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.only(left: myMargem),
+            padding: EdgeInsets.only(left: myMargem),
             child: Text(
               titulo,
               style: const TextStyle(

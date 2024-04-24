@@ -89,14 +89,14 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const SizedBox(
+                          SizedBox(
                             width: myMargem,
                           ),
                           Expanded(
                             child: Text(
                               "Ondas ${widget.versao}\nHistórias ao pé do ouvido",
-                              style: const TextStyle(
-                                fontSize: 26,
+                              style: TextStyle(
+                                fontSize: screenHeight * 0.03,
                                 fontWeight: FontWeight.bold,
                               ),
                               overflow: TextOverflow.ellipsis,
@@ -106,7 +106,11 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(myMargem),
+                        padding: EdgeInsets.only(
+                          left: myMargem,
+                          top: myMargem2,
+                          bottom: myMargem,
+                        ),
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.45,
                           height: MediaQuery.of(context).size.width * 0.1,
@@ -115,16 +119,20 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, top: 8, bottom: 8, right: 8),
+                            padding: EdgeInsets.only(
+                                left: myMargem,
+                                top: myMargem2,
+                                bottom: myMargem2,
+                                right: myMargem2),
                             child: DropdownButton(
                               value: dropdownValue,
                               icon:
                                   const Icon(Icons.keyboard_arrow_down_rounded),
                               isExpanded: true,
                               underline: Container(),
-                              style: const TextStyle(
-                                  fontSize: 20, color: Colors.black),
+                              style: TextStyle(
+                                  fontSize: screenHeight * 0.023,
+                                  color: Colors.black),
                               items: OndasDao.moduloList.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
@@ -199,7 +207,9 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: screenHeight - proportionalImageHeight - (screenHeight * 0.2),
+                                    height: screenHeight -
+                                        proportionalImageHeight -
+                                        (screenHeight * 0.165),
                                     child: ListView.builder(
                                         itemCount: items.length,
                                         itemBuilder:
