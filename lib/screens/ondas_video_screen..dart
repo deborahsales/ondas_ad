@@ -8,8 +8,11 @@ class OndasVideoScreen extends StatefulWidget {
   final String ano;
   final String miniatura;
 
-
-  const OndasVideoScreen({super.key, required this.imgTopo, required this.ano, required this.miniatura});
+  const OndasVideoScreen(
+      {super.key,
+      required this.imgTopo,
+      required this.ano,
+      required this.miniatura});
 
   @override
   State<OndasVideoScreen> createState() => _OndasVideoScreenState();
@@ -28,7 +31,12 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double aspectRatio = 1953.0 / 2418.0;
+    double proportionalImageHeight = screenWidth * aspectRatio;
+
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         children: [
           Column(
@@ -49,11 +57,32 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
                     },
                   ),
                   Column(
+                    children: [
+                      SizedBox(
+                        height: proportionalImageHeight * 0.7,
+                      ),
+                      Container(
+                        height: proportionalImageHeight * 0.6,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [
+                              Colors.white,
+                              Colors.white,
+                              Color.fromARGB(0, 255, 255, 255),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.38,
+                        height: proportionalImageHeight * 0.90,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -109,46 +138,69 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
                         ),
                       ),
                       FutureBuilder<List<VideoAula>>(
-                        future: OndasDao().getModuloAno(dropdownValue!, widget.ano, widget.miniatura),
-                        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                        future: OndasDao().getModuloAno(
+                            dropdownValue!, widget.ano, widget.miniatura),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<dynamic> snapshot) {
                           List<VideoAula>? items = snapshot.data;
                           switch (snapshot.connectionState) {
                             case ConnectionState.none:
                               return const Center(
                                   child: Column(
-                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                                      padding: EdgeInsets.all(25.0),
-                                      child: Text('Carregando',
-                                          style: TextStyle(fontSize: 20)),
-                                    )],
-                                  ));
+                                children: [
+                                  SizedBox(
+                                    height: 40,
+                                  ),
+                                  CircularProgressIndicator(),
+                                  Padding(
+                                    padding: EdgeInsets.all(25.0),
+                                    child: Text('Carregando',
+                                        style: TextStyle(fontSize: 20)),
+                                  )
+                                ],
+                              ));
                             case ConnectionState.waiting:
                               return const Center(
                                   child: Column(
-                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                                      padding: EdgeInsets.all(25.0),
-                                      child: Text('Carregando',
-                                          style: TextStyle(fontSize: 20)),
-                                    )],
-                                  ));
+                                children: [
+                                  SizedBox(
+                                    height: 40,
+                                  ),
+                                  CircularProgressIndicator(),
+                                  Padding(
+                                    padding: EdgeInsets.all(25.0),
+                                    child: Text('Carregando',
+                                        style: TextStyle(fontSize: 20)),
+                                  )
+                                ],
+                              ));
                             case ConnectionState.active:
                               return const Center(
                                   child: Column(
-                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                                      padding: EdgeInsets.all(25.0),
-                                      child: Text('Carregando',
-                                          style: TextStyle(fontSize: 20)),
-                                    )],
-                                  ));
+                                children: [
+                                  SizedBox(
+                                    height: 40,
+                                  ),
+                                  CircularProgressIndicator(),
+                                  Padding(
+                                    padding: EdgeInsets.all(25.0),
+                                    child: Text('Carregando',
+                                        style: TextStyle(fontSize: 20)),
+                                  )
+                                ],
+                              ));
                             case ConnectionState.done:
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: MediaQuery.of(context).size.height * 0.45,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.45,
                                     child: ListView.builder(
                                         itemCount: items.length,
-                                        itemBuilder: (BuildContext context, int index) {
-                                          final VideoAula resultado = items[index];
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          final VideoAula resultado =
+                                              items[index];
                                           return resultado;
                                         }),
                                   );

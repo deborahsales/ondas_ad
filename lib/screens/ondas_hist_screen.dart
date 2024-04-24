@@ -9,7 +9,12 @@ class OndasHistScreen extends StatefulWidget {
   final String ano;
   final String versao;
 
-  const OndasHistScreen({super.key, required this.imgTopo, required this.miniatura, required this.ano, required this.versao});
+  const OndasHistScreen(
+      {super.key,
+      required this.imgTopo,
+      required this.miniatura,
+      required this.ano,
+      required this.versao});
 
   @override
   State<OndasHistScreen> createState() => _OndasHistScreen();
@@ -25,10 +30,14 @@ class _OndasHistScreen extends State<OndasHistScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double aspectRatio = 1953.0 / 2418.0;
+    double proportionalImageHeight = screenWidth * aspectRatio;
+
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         children: [
           Column(
@@ -49,11 +58,32 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                     },
                   ),
                   Column(
+                    children: [
+                      SizedBox(
+                        height: proportionalImageHeight * 0.7,
+                      ),
+                      Container(
+                        height: proportionalImageHeight * 0.6,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [
+                              Colors.white,
+                              Colors.white,
+                              Color.fromARGB(0, 255, 255, 255),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.38,
+                        height: proportionalImageHeight * 0.90,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -89,7 +119,7 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                             child: DropdownButton(
                               value: dropdownValue,
                               icon:
-                              const Icon(Icons.keyboard_arrow_down_rounded),
+                                  const Icon(Icons.keyboard_arrow_down_rounded),
                               isExpanded: true,
                               underline: Container(),
                               style: const TextStyle(
@@ -102,7 +132,7 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                               }).toList(),
                               onChanged: (String? selectedValue) {
                                 setState(
-                                      () {
+                                  () {
                                     dropdownValue = selectedValue;
                                     _atualizarBusca();
                                   },
@@ -113,46 +143,69 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                         ),
                       ),
                       FutureBuilder<List<Podcast>>(
-                        future: OndasDao().getPodcast(widget.versao, widget.ano, dropdownValue!, widget.miniatura),
-                        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                        future: OndasDao().getPodcast(widget.versao, widget.ano,
+                            dropdownValue!, widget.miniatura),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<dynamic> snapshot) {
                           List<Podcast>? items = snapshot.data;
                           switch (snapshot.connectionState) {
                             case ConnectionState.none:
                               return const Center(
                                   child: Column(
-                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                                      padding: EdgeInsets.all(25.0),
-                                      child: Text('Carregando',
-                                          style: TextStyle(fontSize: 20)),
-                                    )],
-                                  ));
+                                children: [
+                                  SizedBox(
+                                    height: 40,
+                                  ),
+                                  CircularProgressIndicator(),
+                                  Padding(
+                                    padding: EdgeInsets.all(25.0),
+                                    child: Text('Carregando',
+                                        style: TextStyle(fontSize: 20)),
+                                  )
+                                ],
+                              ));
                             case ConnectionState.waiting:
                               return const Center(
                                   child: Column(
-                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                                      padding: EdgeInsets.all(25.0),
-                                      child: Text('Carregando',
-                                          style: TextStyle(fontSize: 20)),
-                                    )],
-                                  ));
+                                children: [
+                                  SizedBox(
+                                    height: 40,
+                                  ),
+                                  CircularProgressIndicator(),
+                                  Padding(
+                                    padding: EdgeInsets.all(25.0),
+                                    child: Text('Carregando',
+                                        style: TextStyle(fontSize: 20)),
+                                  )
+                                ],
+                              ));
                             case ConnectionState.active:
                               return const Center(
                                   child: Column(
-                                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                                      padding: EdgeInsets.all(25.0),
-                                      child: Text('Carregando',
-                                          style: TextStyle(fontSize: 20)),
-                                    )],
-                                  ));
+                                children: [
+                                  SizedBox(
+                                    height: 40,
+                                  ),
+                                  CircularProgressIndicator(),
+                                  Padding(
+                                    padding: EdgeInsets.all(25.0),
+                                    child: Text('Carregando',
+                                        style: TextStyle(fontSize: 20)),
+                                  )
+                                ],
+                              ));
                             case ConnectionState.done:
                               if (snapshot.hasData && items != null) {
                                 if (items.isNotEmpty) {
                                   return SizedBox(
-                                    height: MediaQuery.of(context).size.height * 0.40,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.40,
                                     child: ListView.builder(
                                         itemCount: items.length,
-                                        itemBuilder: (BuildContext context, int index) {
-                                          final Podcast resultado = items[index];
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          final Podcast resultado =
+                                              items[index];
                                           return resultado;
                                         }),
                                   );
