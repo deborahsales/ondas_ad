@@ -48,9 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                    right: myMargem + (myMargem * 0.3),
-                    left: myMargem + (myMargem * 0.3)),
+                padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.02),
                 child: Image.asset(
                   'assets/images/logos.png',
                 ),
