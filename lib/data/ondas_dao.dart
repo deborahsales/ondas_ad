@@ -113,4 +113,22 @@ class OndasDao {
     'Módulo 07',
     'Módulo 08',
   ];
+
+  static const List<String> anoList = <String>[
+    '1º e 2º anos',
+    '3º ano',
+    '4º e 5º anos',
+  ];
+
+  static const List<String> componenteList = <String>[
+    'Cidadania e Convivência em Paz',
+    'Ciências',
+    'Língua Portuguesa',
+    'Maneiras de pensar e agir',
+    'Matemática',
+    'Princípios para uma vida saudável',
+    'Tecnologia',
+  ];
+
+
 }

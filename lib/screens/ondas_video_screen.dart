@@ -4,28 +4,27 @@ import '../components/constants.dart';
 import '../components/video_aula.dart';
 
 class OndasVideoScreen extends StatefulWidget {
-  final String imgTopo;
-  final String ano;
-  final String miniatura;
 
   const OndasVideoScreen(
-      {super.key,
-      required this.imgTopo,
-      required this.ano,
-      required this.miniatura});
+      {super.key});
 
   @override
   State<OndasVideoScreen> createState() => _OndasVideoScreenState();
 }
 
 class _OndasVideoScreenState extends State<OndasVideoScreen> {
-  String? dropdownValue = OndasDao.moduloList.first;
+  String? dropdownModuloValue = OndasDao.moduloList.first;
+  String? dropdownAnoValue = OndasDao.anoList.first;
   bool _buscar = false;
   String anoFormatado = "";
+  String imgTopo = 'assets/images/topo_ondas_2_1_e_2.png';
+  String imgMiniatura = 'assets/images/miniatura_1_e_2_ano.png';
 
   void _atualizarBusca() {
     setState(() {
       _buscar = true;
+      imgTopo = dropdownAnoValue == '1º e 2º anos' ? 'assets/images/topo_ondas_2_1_e_2.png' : dropdownAnoValue == '3º ano' ? 'assets/images/topo_ondas_2_3.png' : 'assets/images/topo_ondas_2_4_e_5.png';
+      imgMiniatura = dropdownAnoValue == '1º e 2º anos' ? 'assets/images/miniatura_1_e_2_ano.png' : dropdownAnoValue == '3º ano' ? 'assets/images/miniatura_3_ano.png' : 'assets/images/miniatura_4_e_5_ano.png';
     });
   }
 
@@ -44,9 +43,7 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
             children: [
               Stack(
                 children: [
-                  Image.asset(
-                    widget.imgTopo,
-                  ),
+                  Image.asset(imgTopo),
                   IconButton(
                     icon: Icon(
                       Icons.arrow_back,
@@ -92,62 +89,111 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
                             width: myMargem,
                           ),
                           Text(
-                            "Ondas 2.0 - ${widget.ano.length == 1 ? widget.ano : "${widget.ano[0]}º${widget.ano.substring(1)}"}º ano",
+                            "Ondas 2.0 - Desenhos animados",
                             style: TextStyle(
-                              fontSize: screenHeight * 0.03,
+                              fontSize: screenHeight * 0.029,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: myMargem,
-                          top: myMargem2,
-                          bottom: myMargem,
-                        ),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          height: MediaQuery.of(context).size.width * 0.1,
-                          decoration: BoxDecoration(
-                            color: myGray,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Padding(
+                      Row(
+                        children: [
+                          Padding(
                             padding: EdgeInsets.only(
-                                left: myMargem,
-                                top: myMargem2,
-                                bottom: myMargem2,
-                                right: myMargem2),
-                            child: DropdownButton(
-                              value: dropdownValue,
-                              icon:
-                                  const Icon(Icons.keyboard_arrow_down_rounded),
-                              isExpanded: true,
-                              underline: Container(),
-                              style: TextStyle(
-                                  fontSize: screenHeight * 0.023, color: Colors.black),
-                              items: OndasDao.moduloList.map((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (String? selectedValue) {
-                                setState(
-                                  () {
-                                    dropdownValue = selectedValue;
-                                    _atualizarBusca();
+                              left: myMargem,
+                              top: myMargem2,
+                              bottom: myMargem,
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              height: MediaQuery.of(context).size.width * 0.1,
+                              decoration: BoxDecoration(
+                                color: myGray,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: myMargem,
+                                    top: myMargem2,
+                                    bottom: myMargem2,
+                                    right: myMargem2),
+                                child: DropdownButton(
+                                  value: dropdownAnoValue,
+                                  icon:
+                                      const Icon(Icons.keyboard_arrow_down_rounded),
+                                  isExpanded: true,
+                                  underline: Container(),
+                                  style: TextStyle(
+                                      fontSize: screenHeight * 0.023, color: Colors.black),
+                                  items: OndasDao.anoList.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                  onChanged: (String? selectedValue) {
+                                    setState(
+                                      () {
+                                        dropdownAnoValue = selectedValue;
+                                        _atualizarBusca();
+                                      },
+                                    );
                                   },
-                                );
-                              },
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: myMargem,
+                              top: myMargem2,
+                              bottom: myMargem,
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              height: MediaQuery.of(context).size.width * 0.1,
+                              decoration: BoxDecoration(
+                                color: myGray,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: myMargem,
+                                    top: myMargem2,
+                                    bottom: myMargem2,
+                                    right: myMargem2),
+                                child: DropdownButton(
+                                  value: dropdownModuloValue,
+                                  icon:
+                                  const Icon(Icons.keyboard_arrow_down_rounded),
+                                  isExpanded: true,
+                                  underline: Container(),
+                                  style: TextStyle(
+                                      fontSize: screenHeight * 0.023, color: Colors.black),
+                                  items: OndasDao.moduloList.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                  onChanged: (String? selectedValue) {
+                                    setState(
+                                          () {
+                                        dropdownModuloValue = selectedValue;
+                                        _atualizarBusca();
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       FutureBuilder<List<VideoAula>>(
                         future: OndasDao().getModuloAno(
-                            dropdownValue!, widget.ano, widget.miniatura),
+                            dropdownModuloValue!, dropdownAnoValue!, imgMiniatura),
                         builder: (BuildContext context,
                             AsyncSnapshot<dynamic> snapshot) {
                           List<VideoAula>? items = snapshot.data;

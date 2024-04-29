@@ -19,3 +19,16 @@ String ondas2Caderno3 =
     'https://drive.google.com/u/0/uc?id=12yJGcgElkUmBTF8WQa-ZxVhqbDs93ECa&export=download';
 String ondas2Caderno4e5 =
     'https://drive.google.com/u/0/uc?id=1BE1T7-YzBv3fLUZvZV55zfhzl3J1-7d3&export=download';
+
+String ondas1Apoio1e2 =
+    'https://drive.google.com/u/0/uc?id=1CuSq_-9vbkvcYS38jPsPpFrsSaeJLHTx&export=download';
+String ondas1Apoio3 =
+    'https://drive.google.com/u/0/uc?id=1Y8Tj4jmZDoiBQMYVBmjwqPw_OBvcikME&export=download';
+String ondas1Apoio4e5 =
+    'https://drive.google.com/u/0/uc?id=1LNFfXNs6t40mN1FjJZ2L99041sKwOYP7&export=download';
+String ondas2Apoio1e2 =
+    'https://drive.google.com/u/0/uc?id=1jLykyMtB2nNQfZZsGEUcMywU0yZ9tPj_&export=download';
+String ondas2Apoio3 =
+    'https://drive.google.com/u/0/uc?id=1PiJ4vE5oUN0rOlgsDo8n9dNKsHKAUsuY&export=download';
+String ondas2Apoio4e5 =
+    'https://drive.google.com/u/0/uc?id=1j9MCrPG30z5OejNK9EVOOwlQH1sZAzPq&export=download';

@@ -5,14 +5,12 @@ import '../components/constants.dart';
 
 class OndasPodcastScreen extends StatefulWidget {
   final String imgTopo;
-  final String modulo;
   final String miniatura;
   final String versao;
 
   const OndasPodcastScreen(
       {super.key,
       required this.imgTopo,
-      required this.modulo,
       required this.miniatura,
       required this.versao});
 
@@ -21,6 +19,15 @@ class OndasPodcastScreen extends StatefulWidget {
 }
 
 class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
+  String? dropdownValue = OndasDao.moduloList.first;
+  bool _buscar = false;
+
+  void _atualizarBusca() {
+    setState(() {
+      _buscar = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -77,27 +84,70 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                       SizedBox(
                         height: proportionalImageHeight * 0.90,
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: myMargem,
+                          ),
+                          Text(
+                            "Ondas ${widget.versao} - Podcasts",
+                            style: TextStyle(
+                              fontSize: screenHeight * 0.03,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: myMargem),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: myMargem,
-                            ),
-                            Text(
-                              "Ondas ${widget.versao} - ${widget.modulo}",
+                        padding: EdgeInsets.only(
+                          left: myMargem,
+                          top: myMargem2,
+                          bottom: myMargem,
+                        ),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          height: MediaQuery.of(context).size.width * 0.1,
+                          decoration: BoxDecoration(
+                            color: myGray,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: myMargem,
+                                top: myMargem2,
+                                bottom: myMargem2,
+                                right: myMargem2),
+                            child: DropdownButton(
+                              value: dropdownValue,
+                              icon:
+                              const Icon(Icons.keyboard_arrow_down_rounded),
+                              isExpanded: true,
+                              underline: Container(),
                               style: TextStyle(
-                                fontSize: screenHeight * 0.03,
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  fontSize: screenHeight * 0.023,
+                                  color: Colors.black),
+                              items: OndasDao.moduloList.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (String? selectedValue) {
+                                setState(
+                                      () {
+                                    dropdownValue = selectedValue;
+                                    _atualizarBusca();
+                                  },
+                                );
+                              },
                             ),
-                          ],
+                          ),
                         ),
                       ),
                       FutureBuilder<List<Podcast>>(
                         future: OndasDao().getPodcast(
-                            widget.versao, '', widget.modulo, widget.miniatura),
+                            widget.versao, '', dropdownValue!, widget.miniatura),
                         builder: (BuildContext context,
                             AsyncSnapshot<dynamic> snapshot) {
                           List<Podcast>? items = snapshot.data;
