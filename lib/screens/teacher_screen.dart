@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ondas_ad/screens/habilidade_screen.dart';
 import 'package:ondas_ad/screens/pdf_viewer_screen.dart';
+import 'package:ondas_ad/screens/componente_screen.dart';
 import '../components/constants.dart';
 
 class TeacherScreen extends StatelessWidget {
@@ -262,6 +264,136 @@ class TeacherScreen extends StatelessWidget {
                           ],
                         ),
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: myMargem,
+                          ),
+                          Text(
+                            "Recursos Avançados",
+                            style: TextStyle(
+                                fontSize: screenHeight * 0.03,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: proportionalImageHeight * 0.35,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
+                                  left: myMargem),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const ComponenteScreen()));
+                                },
+                                child: Stack(
+                                  children: [ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        MediaQuery.of(context).size.width * 0.02),
+                                    child: Image.asset(
+                                      'assets/images/busca_componente.png',
+                                    ),
+                                  ),
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          height: proportionalImageHeight * 0.23,
+                                        ),
+                                        SizedBox(
+                                          width:
+                                          (proportionalImageHeight * 0.39) *
+                                              aspectRatio,
+                                          child: Center(
+                                            child: Text(
+                                              'Componente | Ano',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize:
+                                                  proportionalImageHeight *
+                                                      0.045,
+                                                  color: Colors.white),
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ]
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
+                                  left: myMargem),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const HabilidadeScreen()));
+                                },
+                                child: Stack(
+                                    children: [ClipRRect(
+                                      borderRadius: BorderRadius.circular(
+                                          MediaQuery.of(context).size.width * 0.02),
+                                      child: Image.asset(
+                                        'assets/images/busca_bncc.png',
+                                      ),
+                                    ),
+                                      Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            height: proportionalImageHeight * 0.23,
+                                          ),
+                                          SizedBox(
+                                            width:
+                                            (proportionalImageHeight * 0.39) *
+                                                aspectRatio,
+                                            child: Center(
+                                              child: Text(
+                                                'Habilidade | BNCC',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                    proportionalImageHeight *
+                                                        0.045,
+                                                    color: Colors.white),
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ]
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: myMargem,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: myMargem,),
                     ],
                   ),
                 ]),

@@ -9,6 +9,8 @@ Future<Database> getDatabase() async {
     path,
     onCreate: (db, version) {
       db.execute(OndasDao.tableSql);
+      db.execute(OndasDao.table2Sql);
+      db.execute(OndasDao.table3Sql);
     },
     version: 1,
   );
