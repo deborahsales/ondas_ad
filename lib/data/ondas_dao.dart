@@ -97,7 +97,7 @@ class OndasDao {
         await rootBundle.loadString('assets/componente_bd.csv');
     final List<List<dynamic>> csvData2 =
         const CsvToListConverter().convert(csvString2);
-    var itemExists2 = await getPlanilha('Tecnologia', '1º ano');
+    var itemExists2 = await getComponenteAno('Tecnologia', '1º ano');
 
     if (itemExists2.isEmpty) {
       await database.transaction((txn) async {
@@ -122,10 +122,10 @@ class OndasDao {
     }
 
     final String csvString3 =
-    await rootBundle.loadString('assets/habilidade_bd.csv');
+        await rootBundle.loadString('assets/habilidade_bd.csv');
     final List<List<dynamic>> csvData3 =
-    const CsvToListConverter().convert(csvString3);
-    var itemExists3 = await getBNCC('EF01HI01');
+        const CsvToListConverter().convert(csvString3);
+    var itemExists3 = await getHabilidade('EF01HI01');
 
     if (itemExists3.isEmpty) {
       await database.transaction((txn) async {
@@ -152,28 +152,24 @@ class OndasDao {
     await database.close();
   }
 
-  Future<List<Resultado>> getPlanilha(
+  Future<List<Resultado>> getComponenteAno(
       String componente, String anoPlanilha) async {
     final Database bancoDeDados = await getDatabase();
     final List<Map<String, dynamic>> result = await bancoDeDados.query(
         _table2Name,
         where: '$_componente = ? AND $_anoPlanilha = ?',
         whereArgs: [componente, anoPlanilha]);
-    return toListPlanilha(result);
+    return toListComponenteAno(result);
   }
 
-  Future<List<Resultado>> getBNCC(
-      String habilidade) async {
+  Future<List<Resultado>> getHabilidade(String habilidade) async {
     final Database bancoDeDados = await getDatabase();
-    final List<Map<String, dynamic>> result = await bancoDeDados.query(
-        _table3Name,
-        where: '$_habilidade = ?',
-        whereArgs: [habilidade]);
-    return toListBNCC(result);
+    final List<Map<String, dynamic>> result = await bancoDeDados
+        .query(_table3Name, where: '$_habilidade = ?', whereArgs: [habilidade]);
+    return toListHabilidade(result);
   }
 
-  Future<String> getDescricao(
-      String habilidade) async {
+  Future<String> getDescricao(String habilidade) async {
     final Database bancoDeDados = await getDatabase();
     final List<Map<String, dynamic>> result = await bancoDeDados.query(
         _table3Name,
@@ -181,7 +177,8 @@ class OndasDao {
         distinct: true,
         where: '$_habilidade = ?',
         whereArgs: [habilidade]);
-    return toListString(result);
+
+    return result[0][_descricao];
   }
 
   Future<List<VideoAula>> getModuloAno(
@@ -204,16 +201,7 @@ class OndasDao {
     return toListPodcast(result, image);
   }
 
-  String toListString(List<Map<String, dynamic>> mapaResultados) {
-    String resultados = '';
-    for (Map<String, dynamic> linha in mapaResultados) {
-      String descricao = linha['descricao'];
-      resultados = descricao;
-    }
-    return resultados;
-  }
-
-  List<Resultado> toListPlanilha(List<Map<String, dynamic>> mapaResultados) {
+  List<Resultado> toListComponenteAno(List<Map<String, dynamic>> mapaResultados) {
     final List<Resultado> resultados = [];
     for (Map<String, dynamic> linha in mapaResultados) {
       String habilidade = linha['habilidade'];
@@ -230,7 +218,7 @@ class OndasDao {
       String tituloUm = 'Ondas $ondas - $agrupamento ano';
       String tituloDois = '$moduloOndas - $aulaOndas - Páginas: $paginaCaderno';
       String dadosUm = 'Habilidade [$habilidade] - $descricao';
-      String dadosDois = 'Unidade ProFuturo: $aulaPF' ;
+      String dadosDois = 'Unidade ProFuturo: $aulaPF';
       String dadosExpandidos = '$complementar\n\nSugestão: $sugestoes';
 
       final Resultado resultado = Resultado(
@@ -245,7 +233,7 @@ class OndasDao {
     return resultados;
   }
 
-  List<Resultado> toListBNCC(List<Map<String, dynamic>> mapaResultados) {
+  List<Resultado> toListHabilidade(List<Map<String, dynamic>> mapaResultados) {
     final List<Resultado> resultados = [];
     for (Map<String, dynamic> linha in mapaResultados) {
       String ondas = linha['ondas'];
@@ -260,7 +248,7 @@ class OndasDao {
       String tituloUm = 'Ondas $ondas - $agrupamento ano';
       String tituloDois = '$moduloOndas - $aulaOndas - Páginas: $paginaCaderno';
       String dadosUm = complementar;
-      String dadosDois = 'Unidade ProFuturo: $aulaPF' ;
+      String dadosDois = 'Unidade ProFuturo: $aulaPF';
       String dadosExpandidos = 'Sugestão: $sugestoes';
 
       final Resultado resultado = Resultado(

@@ -94,56 +94,58 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
             ),
           ),
           Center(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              width: MediaQuery.of(context).size.width * 0.95,
-              child: Expanded(
-                  child: _buscar
-                      ? FutureBuilder<String>(
-                          future:
-                              OndasDao().getDescricao(dropdownHabilidadeValue!),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<dynamic> snapshot) {
-                            String? items = snapshot.data;
-                            switch (snapshot.connectionState) {
-                              case ConnectionState.none:
-                                return const Center();
-                              case ConnectionState.waiting:
-                                return const Center();
-                              case ConnectionState.active:
-                                return const Center();
-                              case ConnectionState.done:
-                                if (snapshot.hasData && items != null) {
-                                  if (items.isNotEmpty) {
-                                    return Padding(
-                                      padding: EdgeInsets.all(myMargem),
-                                      child: Text(
-                                        snapshot.data!,
-                                        style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.025,
-                                        ),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: myMargem),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                width: MediaQuery.of(context).size.width * 0.95,
+                child: _buscar
+                    ? FutureBuilder<String>(
+                        future:
+                            OndasDao().getDescricao(dropdownHabilidadeValue!),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<dynamic> snapshot) {
+                          String? items = snapshot.data;
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.none:
+                              return const SizedBox();
+                            case ConnectionState.waiting:
+                              return const SizedBox();
+                            case ConnectionState.active:
+                              return const SizedBox();
+                            case ConnectionState.done:
+                              if (snapshot.hasData && items != null) {
+                                if (items.isNotEmpty) {
+                                  return Padding(
+                                    padding: EdgeInsets.all(myMargem),
+                                    child: Text(
+                                      snapshot.data!,
+                                      style: TextStyle(
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                0.025,
                                       ),
-                                    );
-                                  }
-                                  return const Center();
+                                    ),
+                                  );
                                 }
-                                return const Center();
-                            }
-                          },
-                        )
-                      : const Center()),
+                                return const SizedBox();
+                              }
+                              return const SizedBox();
+                          }
+                        },
+                      )
+                    : const SizedBox(),
+              ),
             ),
           ),
           Expanded(
               child: _buscar
                   ? FutureBuilder<List<Resultado>>(
-                      future: OndasDao().getBNCC(dropdownHabilidadeValue!),
+                      future:
+                          OndasDao().getHabilidade(dropdownHabilidadeValue!),
                       builder: (BuildContext context,
                           AsyncSnapshot<dynamic> snapshot) {
                         List<Resultado>? items = snapshot.data;

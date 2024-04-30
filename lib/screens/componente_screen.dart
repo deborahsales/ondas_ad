@@ -171,7 +171,7 @@ class _ComponenteScreenState extends State<ComponenteScreen> {
           Expanded(
               child: _buscar
                   ? FutureBuilder<List<Resultado>>(
-                      future: OndasDao().getPlanilha(
+                      future: OndasDao().getComponenteAno(
                           dropdownComponenteValue!, dropdownAnoValue!),
                       builder: (BuildContext context,
                           AsyncSnapshot<dynamic> snapshot) {
