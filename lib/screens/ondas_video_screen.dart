@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ondas_ad/data/ondas_dao.dart';
 import '../components/constants.dart';
 import '../components/video_aula.dart';
+import '../data/database.dart';
 
 class OndasVideoScreen extends StatefulWidget {
 
@@ -271,6 +272,8 @@ class _OndasVideoScreenState extends State<OndasVideoScreen> {
                                   ),
                                 );
                               }
+                              deleteDatabase();
+                              OndasDao().insertDataFromCSV();
                               return const Center(
                                 child: Column(
                                   children: [

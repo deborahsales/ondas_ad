@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ondas_ad/components/podcast.dart';
+import 'package:ondas_ad/data/database.dart';
 import 'package:ondas_ad/data/ondas_dao.dart';
 import '../components/constants.dart';
 
@@ -203,7 +204,7 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                                   return SizedBox(
                                     height: screenHeight -
                                         proportionalImageHeight -
-                                        (screenHeight * 0.07),
+                                        (screenHeight * 0.12),
                                     child: ListView.builder(
                                         itemCount: items.length,
                                         itemBuilder:
@@ -225,6 +226,8 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                                   ),
                                 );
                               }
+                              deleteDatabase();
+                              OndasDao().insertDataFromCSV();
                               return const Center(
                                 child: Column(
                                   children: [

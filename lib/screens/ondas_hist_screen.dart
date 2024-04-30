@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ondas_ad/components/podcast.dart';
 import 'package:ondas_ad/data/ondas_dao.dart';
 import '../components/constants.dart';
+import '../data/database.dart';
 
 class OndasHistScreen extends StatefulWidget {
   final String imgTopo;
@@ -231,6 +232,8 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                                   ),
                                 );
                               }
+                              deleteDatabase();
+                              OndasDao().insertDataFromCSV();
                               return const Center(
                                 child: Column(
                                   children: [

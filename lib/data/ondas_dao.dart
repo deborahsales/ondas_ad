@@ -70,11 +70,12 @@ class OndasDao {
   static const String _table3Name = 'habilidadeTable';
 
   Future<void> insertDataFromCSV() async {
-    final String csvString = await rootBundle.loadString('assets/ondas_bd.csv');
-    final List<List<dynamic>> csvData =
-        const CsvToListConverter().convert(csvString);
+
     final Database database = await getDatabase();
-    var itemExists = await getModuloAno('Módulo 01', '1 e 2', '');
+
+    final String csvString = await rootBundle.loadString('assets/ondas_bd.csv');
+    final List<List<dynamic>> csvData = const CsvToListConverter().convert(csvString);
+    var itemExists = await database.query(_tableName);
 
     if (itemExists.isEmpty) {
       await database.transaction((txn) async {
@@ -93,11 +94,9 @@ class OndasDao {
       });
     }
 
-    final String csvString2 =
-        await rootBundle.loadString('assets/componente_bd.csv');
-    final List<List<dynamic>> csvData2 =
-        const CsvToListConverter().convert(csvString2);
-    var itemExists2 = await getComponenteAno('Tecnologia', '1º ano');
+    final String csvString2 = await rootBundle.loadString('assets/componente_bd.csv');
+    final List<List<dynamic>> csvData2 = const CsvToListConverter().convert(csvString2);
+    var itemExists2 = await database.query(_table2Name);
 
     if (itemExists2.isEmpty) {
       await database.transaction((txn) async {
@@ -121,11 +120,9 @@ class OndasDao {
       });
     }
 
-    final String csvString3 =
-        await rootBundle.loadString('assets/habilidade_bd.csv');
-    final List<List<dynamic>> csvData3 =
-        const CsvToListConverter().convert(csvString3);
-    var itemExists3 = await getHabilidade('EF01HI01');
+    final String csvString3 = await rootBundle.loadString('assets/habilidade_bd.csv');
+    final List<List<dynamic>> csvData3 = const CsvToListConverter().convert(csvString3);
+    var itemExists3 = await database.query(_table3Name);
 
     if (itemExists3.isEmpty) {
       await database.transaction((txn) async {
@@ -154,8 +151,8 @@ class OndasDao {
 
   Future<List<Resultado>> getComponenteAno(
       String componente, String anoPlanilha) async {
-    final Database bancoDeDados = await getDatabase();
-    final List<Map<String, dynamic>> result = await bancoDeDados.query(
+    final Database database = await getDatabase();
+    final List<Map<String, dynamic>> result = await database.query(
         _table2Name,
         where: '$_componente = ? AND $_anoPlanilha = ?',
         whereArgs: [componente, anoPlanilha]);
@@ -163,15 +160,15 @@ class OndasDao {
   }
 
   Future<List<Resultado>> getHabilidade(String habilidade) async {
-    final Database bancoDeDados = await getDatabase();
-    final List<Map<String, dynamic>> result = await bancoDeDados
+    final Database database = await getDatabase();
+    final List<Map<String, dynamic>> result = await database
         .query(_table3Name, where: '$_habilidade = ?', whereArgs: [habilidade]);
     return toListHabilidade(result);
   }
 
   Future<String> getDescricao(String habilidade) async {
-    final Database bancoDeDados = await getDatabase();
-    final List<Map<String, dynamic>> result = await bancoDeDados.query(
+    final Database database = await getDatabase();
+    final List<Map<String, dynamic>> result = await database.query(
         _table3Name,
         columns: [_descricao],
         distinct: true,
@@ -183,8 +180,8 @@ class OndasDao {
 
   Future<List<VideoAula>> getModuloAno(
       String modulo, String ano, String image) async {
-    final Database bancoDeDados = await getDatabase();
-    final List<Map<String, dynamic>> result = await bancoDeDados.query(
+    final Database database = await getDatabase();
+    final List<Map<String, dynamic>> result = await database.query(
         _tableName,
         where: '$_versao = ? AND $_tipo = ? AND $_ano = ? AND $_modulo = ?',
         whereArgs: ['2.0', 'video', ano, modulo]);
@@ -193,8 +190,8 @@ class OndasDao {
 
   Future<List<Podcast>> getPodcast(
       String versao, String ano, String modulo, String image) async {
-    final Database bancoDeDados = await getDatabase();
-    final List<Map<String, dynamic>> result = await bancoDeDados.query(
+    final Database database = await getDatabase();
+    final List<Map<String, dynamic>> result = await database.query(
         _tableName,
         where: '$_versao = ? AND $_ano = ? AND $_tipo = ? AND $_modulo = ?',
         whereArgs: [versao, ano, 'podcast', modulo]);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/constants.dart';
 import '../components/resultado.dart';
+import '../data/database.dart';
 import '../data/ondas_dao.dart';
 
 class ComponenteScreen extends StatefulWidget {
@@ -244,6 +245,8 @@ class _ComponenteScreenState extends State<ComponenteScreen> {
                                 ),
                               );
                             }
+                            deleteDatabase();
+                            OndasDao().insertDataFromCSV();
                             return const Center(
                               child: Column(
                                 children: [

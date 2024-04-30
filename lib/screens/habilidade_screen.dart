@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/constants.dart';
 import '../components/resultado.dart';
+import '../data/database.dart';
 import '../data/ondas_dao.dart';
 
 class HabilidadeScreen extends StatefulWidget {
@@ -217,6 +218,8 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
                                 ),
                               );
                             }
+                            deleteDatabase();
+                            OndasDao().insertDataFromCSV();
                             return const Center(
                               child: Column(
                                 children: [
