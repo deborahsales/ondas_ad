@@ -16,17 +16,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    myMargem = MediaQuery.of(context).size.height * 0.013;
-    myMargem2 = MediaQuery.of(context).size.height * 0.005;
+    screenHeight = MediaQuery.of(context).size.height;
+    screenWidth = MediaQuery.of(context).size.width;
+    myMargem = screenHeight * 0.013;
+    myMargem2 = screenHeight * 0.005;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ondas do Aula Digital',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: myPurple),
         useMaterial3: true,
       ),
       home: const SplashScreen(),
     );
   }
 }
-

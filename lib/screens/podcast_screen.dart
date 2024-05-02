@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:audio_session/audio_session.dart';
+import 'package:ondas_ad/components/constants.dart';
 import '../components/show_snackbar.dart';
 
 class PodcastScreen extends StatefulWidget {
@@ -90,23 +91,21 @@ class _PodcastScreenState extends State<PodcastScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.4,
-            width: MediaQuery.of(context).size.width * 0.8,
+            height: screenHeight * 0.4,
+            width: screenWidth * 0.8,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(
-                  MediaQuery.of(context).size.width * 0.04),
+              borderRadius: BorderRadius.circular(screenWidth * 0.04),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: const Offset(0, 3), // changes position of shadow
+                  spreadRadius: screenWidth * 0.015,
+                  blurRadius: screenWidth * 0.02,
+                  offset: Offset(0, screenWidth * 0.01),
                 ),
               ],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(
-                  MediaQuery.of(context).size.width * 0.04),
+              borderRadius: BorderRadius.circular(screenWidth * 0.04),
               child: Image.asset(
                 widget.image,
                 fit: BoxFit.cover,
@@ -115,21 +114,21 @@ class _PodcastScreenState extends State<PodcastScreen> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.02,
-              left: MediaQuery.of(context).size.height * 0.05,
-              right: MediaQuery.of(context).size.height * 0.05,
+              top: screenHeight * 0.02,
+              left: screenHeight * 0.05,
+              right: screenHeight * 0.05,
             ),
             child: Text(widget.titulo,
                 style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.height * 0.029,
+                  fontSize: screenHeight * 0.029,
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 4),
           ),
           Padding(
             padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.height * 0.02,
-              right: MediaQuery.of(context).size.height * 0.02,
+              left: screenHeight * 0.02,
+              right: screenHeight * 0.02,
             ),
             child: Slider(
               min: 0,
@@ -142,8 +141,7 @@ class _PodcastScreenState extends State<PodcastScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.height * 0.05),
+            padding: EdgeInsets.symmetric(horizontal: screenHeight * 0.05),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -153,12 +151,13 @@ class _PodcastScreenState extends State<PodcastScreen> {
             ),
           ),
           CircleAvatar(
-              radius: 35,
+              radius: screenHeight * 0.045,
+            backgroundColor: myPurple.withOpacity(0.6),
               child: IconButton(
                 icon: Icon(
-                  isPlaying ? Icons.pause : Icons.play_arrow,
+                  isPlaying ? Icons.pause : Icons.play_arrow, color: myWhite,
                 ),
-                iconSize: 50,
+                iconSize: screenHeight * 0.065,
                 onPressed: () async {
                   if (isPlaying) {
                     await audioPlayer.pause();
@@ -166,7 +165,8 @@ class _PodcastScreenState extends State<PodcastScreen> {
                     await audioPlayer.play();
                   }
                 },
-              ))
+              ),
+          ),
         ],
       ),
     );

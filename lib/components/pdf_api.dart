@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 
 class PDFApi {
   static Future<File> loadNetwork(String url) async {
-
     final filename = basename(url);
     final dir = await getApplicationDocumentsDirectory();
     final cachedFilePath = join(dir.path, filename);

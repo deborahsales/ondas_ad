@@ -31,13 +31,11 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     double aspectRatio = 1953.0 / 2418.0;
     double proportionalImageHeight = screenWidth * aspectRatio;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: myWhite,
       body: ListView(
         children: [
           Column(
@@ -50,8 +48,8 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                   IconButton(
                     icon: Icon(
                       Icons.arrow_back,
-                      color: Colors.white,
-                      size: MediaQuery.of(context).size.height * 0.035,
+                      color: myWhite,
+                      size: screenHeight * 0.035,
                     ),
                     onPressed: () {
                       Navigator.pop(context);
@@ -69,9 +67,9 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
                             colors: [
-                              Colors.white,
-                              Colors.white,
-                              Color.fromARGB(0, 255, 255, 255),
+                              myWhite,
+                              myWhite,
+                              myTransparent,
                             ],
                           ),
                         ),
@@ -107,11 +105,11 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                           bottom: myMargem,
                         ),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          height: MediaQuery.of(context).size.width * 0.1,
+                          width: screenWidth * 0.45,
+                          height: screenWidth * 0.1,
                           decoration: BoxDecoration(
                             color: myGray,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(screenWidth * 0.02),
                           ),
                           child: Padding(
                             padding: EdgeInsets.only(
@@ -122,12 +120,12 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                             child: DropdownButton(
                               value: dropdownValue,
                               icon:
-                              const Icon(Icons.keyboard_arrow_down_rounded),
+                                  const Icon(Icons.keyboard_arrow_down_rounded),
                               isExpanded: true,
                               underline: Container(),
                               style: TextStyle(
                                   fontSize: screenHeight * 0.023,
-                                  color: Colors.black),
+                                  color: myBlack),
                               items: OndasDao.moduloList.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
@@ -136,7 +134,7 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                               }).toList(),
                               onChanged: (String? selectedValue) {
                                 setState(
-                                      () {
+                                  () {
                                     dropdownValue = selectedValue;
                                     _atualizarBusca();
                                   },
@@ -147,54 +145,54 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                         ),
                       ),
                       FutureBuilder<List<Podcast>>(
-                        future: OndasDao().getPodcast(
-                            widget.versao, '', dropdownValue!, widget.miniatura),
+                        future: OndasDao().getPodcast(widget.versao, '',
+                            dropdownValue!, widget.miniatura),
                         builder: (BuildContext context,
                             AsyncSnapshot<dynamic> snapshot) {
                           List<Podcast>? items = snapshot.data;
                           switch (snapshot.connectionState) {
                             case ConnectionState.none:
-                              return const Center(
+                              return Center(
                                   child: Column(
                                 children: [
                                   SizedBox(
-                                    height: 40,
+                                    height: screenHeight * 0.055,
                                   ),
-                                  CircularProgressIndicator(),
+                                  const CircularProgressIndicator(),
                                   Padding(
-                                    padding: EdgeInsets.all(25.0),
+                                    padding: EdgeInsets.all(myMargem),
                                     child: Text('Carregando',
-                                        style: TextStyle(fontSize: 20)),
+                                        style: TextStyle(fontSize: screenHeight * 0.02)),
                                   )
                                 ],
                               ));
                             case ConnectionState.waiting:
-                              return const Center(
+                              return Center(
                                   child: Column(
                                 children: [
                                   SizedBox(
-                                    height: 40,
+                                    height: screenHeight * 0.055,
                                   ),
-                                  CircularProgressIndicator(),
+                                  const CircularProgressIndicator(),
                                   Padding(
-                                    padding: EdgeInsets.all(25.0),
+                                    padding: EdgeInsets.all(myMargem),
                                     child: Text('Carregando',
-                                        style: TextStyle(fontSize: 20)),
+                                        style: TextStyle(fontSize: screenHeight * 0.02)),
                                   )
                                 ],
                               ));
                             case ConnectionState.active:
-                              return const Center(
+                              return Center(
                                   child: Column(
                                 children: [
                                   SizedBox(
-                                    height: 40,
+                                    height: screenHeight * 0.055,
                                   ),
-                                  CircularProgressIndicator(),
+                                  const CircularProgressIndicator(),
                                   Padding(
-                                    padding: EdgeInsets.all(25.0),
+                                    padding: EdgeInsets.all(myMargem),
                                     child: Text('Carregando',
-                                        style: TextStyle(fontSize: 20)),
+                                        style: TextStyle(fontSize: screenHeight * 0.02)),
                                   )
                                 ],
                               ));
@@ -215,26 +213,26 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                                         }),
                                   );
                                 }
-                                return const Center(
+                                return Center(
                                   child: Column(
                                     children: [
-                                      Icon(Icons.error_outline, size: 110),
+                                      Icon(Icons.error_outline, size: screenHeight * 0.13),
                                       Text('Não há nenhum resultado',
                                           textAlign: TextAlign.center,
-                                          style: TextStyle(fontSize: 28))
+                                          style: TextStyle(fontSize: screenHeight * 0.02))
                                     ],
                                   ),
                                 );
                               }
                               deleteDatabase();
                               OndasDao().insertDataFromCSV();
-                              return const Center(
+                              return Center(
                                 child: Column(
                                   children: [
-                                    Icon(Icons.report_gmailerrorred, size: 110),
+                                    Icon(Icons.report_gmailerrorred, size: screenHeight * 0.13),
                                     Text('Erro ao carregar resultados',
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 28)),
+                                        style: TextStyle(fontSize: screenHeight * 0.02)),
                                   ],
                                 ),
                               );

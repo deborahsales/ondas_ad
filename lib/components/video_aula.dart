@@ -19,15 +19,14 @@ class VideoAula extends StatelessWidget {
       padding:
           EdgeInsets.only(bottom: myMargem, left: myMargem, right: myMargem),
       child: SizedBox(
-        height: 100,
+        height: screenHeight * 0.1275,
         child: Row(children: [
           Stack(alignment: Alignment.center, children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(
-                  MediaQuery.of(context).size.width * 0.015),
+              borderRadius: BorderRadius.circular(screenWidth * 0.015),
               child: Image.asset(
                 image,
-                width: 180,
+                width: screenHeight * 0.23,
               ),
             ),
             IconButton(
@@ -38,10 +37,10 @@ class VideoAula extends StatelessWidget {
                           builder: (context) =>
                               VideoPlayerScreen(videoId: videoId)));
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.play_circle_fill,
-                  size: 40,
-                  color: Color.fromRGBO(255, 255, 255, 0.8),
+                  size: screenHeight * 0.055,
+                  color: myTransparentWhite,
                 )),
           ]),
           Expanded(
@@ -49,9 +48,9 @@ class VideoAula extends StatelessWidget {
             padding: EdgeInsets.only(left: myMargem),
             child: Text(
               titulo,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: screenWidth * 0.045,
               ),
               overflow: TextOverflow.ellipsis,
               maxLines: 3,

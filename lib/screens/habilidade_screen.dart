@@ -28,7 +28,7 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
       backgroundColor: myPurple,
       appBar: AppBar(
         title: const Text('Habilidade | BNCC'),
-        backgroundColor: Colors.white,
+        backgroundColor: myWhite,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -43,8 +43,8 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
               'Habilidade BNCC:',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: MediaQuery.of(context).size.height * 0.025,
-                  color: Colors.white),
+                  fontSize: screenHeight * 0.025,
+                  color: myWhite),
             ),
           ),
           Center(
@@ -54,11 +54,11 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
                 bottom: myMargem,
               ),
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.95,
-                height: MediaQuery.of(context).size.width * 0.1,
+                width: screenWidth * 0.95,
+                height: screenWidth * 0.1,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
+                  color: myWhite,
+                  borderRadius: BorderRadius.circular(screenWidth * 0.02),
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(
@@ -73,8 +73,8 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
                     isExpanded: true,
                     underline: Container(),
                     style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.023,
-                        color: Colors.black),
+                        fontSize: screenHeight * 0.023,
+                        color: myBlack),
                     items: OndasDao.habilidadeList.map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -99,10 +99,10 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
               padding: EdgeInsets.only(bottom: myMargem),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
+                  color: myWhite,
+                  borderRadius: BorderRadius.circular(screenWidth * 0.02),
                 ),
-                width: MediaQuery.of(context).size.width * 0.95,
+                width: screenWidth * 0.95,
                 child: _buscar
                     ? FutureBuilder<String>(
                         future:
@@ -126,7 +126,7 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
                                       snapshot.data!,
                                       style: TextStyle(
                                         fontSize:
-                                            MediaQuery.of(context).size.height *
+                                            screenHeight *
                                                 0.025,
                                       ),
                                     ),
@@ -152,47 +152,47 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
                         List<Resultado>? items = snapshot.data;
                         switch (snapshot.connectionState) {
                           case ConnectionState.none:
-                            return const Center(
+                            return Center(
                                 child: Column(
                               children: [
                                 SizedBox(
-                                  height: 40,
+                                  height: screenHeight * 0.055,
                                 ),
-                                CircularProgressIndicator(),
+                                const CircularProgressIndicator(),
                                 Padding(
-                                  padding: EdgeInsets.all(25.0),
+                                  padding: EdgeInsets.all(myMargem),
                                   child: Text('Carregando',
-                                      style: TextStyle(fontSize: 18)),
+                                      style: TextStyle(fontSize: screenWidth * 0.02)),
                                 )
                               ],
                             ));
                           case ConnectionState.waiting:
-                            return const Center(
+                            return Center(
                                 child: Column(
                               children: [
                                 SizedBox(
-                                  height: 40,
+                                  height: screenHeight * 0.055,
                                 ),
-                                CircularProgressIndicator(),
+                                const CircularProgressIndicator(),
                                 Padding(
-                                  padding: EdgeInsets.all(25.0),
+                                  padding: EdgeInsets.all(myMargem),
                                   child: Text('Carregando',
-                                      style: TextStyle(fontSize: 18)),
+                                      style: TextStyle(fontSize: screenWidth * 0.02)),
                                 )
                               ],
                             ));
                           case ConnectionState.active:
-                            return const Center(
+                            return Center(
                                 child: Column(
                               children: [
                                 SizedBox(
-                                  height: 40,
+                                  height: screenHeight * 0.055,
                                 ),
-                                CircularProgressIndicator(),
+                                const CircularProgressIndicator(),
                                 Padding(
-                                  padding: EdgeInsets.all(25.0),
+                                  padding: EdgeInsets.all(myMargem),
                                   child: Text('Carregando',
-                                      style: TextStyle(fontSize: 18)),
+                                      style: TextStyle(fontSize: screenWidth * 0.02)),
                                 )
                               ],
                             ));
@@ -207,26 +207,26 @@ class _HabilidadeScreenState extends State<HabilidadeScreen> {
                                       return resultado;
                                     });
                               }
-                              return const Center(
+                              return Center(
                                 child: Column(
                                   children: [
-                                    Icon(Icons.error_outline, size: 110),
+                                    Icon(Icons.error_outline, size: screenHeight * 0.13),
                                     Text('Não há nenhum resultado',
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 18))
+                                        style: TextStyle(fontSize: screenWidth * 0.02))
                                   ],
                                 ),
                               );
                             }
                             deleteDatabase();
                             OndasDao().insertDataFromCSV();
-                            return const Center(
+                            return Center(
                               child: Column(
                                 children: [
-                                  Icon(Icons.report_gmailerrorred, size: 110),
+                                  Icon(Icons.report_gmailerrorred, size: screenHeight * 0.13),
                                   Text('Erro ao carregar resultados',
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 18)),
+                                      style: TextStyle(fontSize: screenWidth * 0.02)),
                                 ],
                               ),
                             );

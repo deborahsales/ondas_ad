@@ -14,13 +14,27 @@ class InitialScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Padding(
+          //   padding: EdgeInsets.all(myMargem),
+          //   child: Text(
+          //     'Estude em Casa Pelas Ondas do Aula Digital',
+          //     textAlign: TextAlign.center,
+          //     overflow: TextOverflow.clip,
+          //     style: TextStyle(
+          //         fontWeight: FontWeight.w900,
+          //         fontSize: screenHeight * 0.04,
+          //         color: myPurple),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: screenHeight * 0.06,
+          // ),
           Padding(
             padding: EdgeInsets.all(myMargem),
             child: Text(
               'Quem está acessando?',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: MediaQuery.of(context).size.height * 0.03),
+                  fontWeight: FontWeight.bold, fontSize: screenHeight * 0.03),
             ),
           ),
           Row(
@@ -29,7 +43,7 @@ class InitialScreen extends StatelessWidget {
               Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
+                    height: screenHeight * 0.2,
                     child: Padding(
                       padding: EdgeInsets.all(myMargem),
                       child: InkWell(
@@ -40,8 +54,8 @@ class InitialScreen extends StatelessWidget {
                                   builder: (context) => const StudentScreen()));
                         },
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              MediaQuery.of(context).size.width * 0.02),
+                          borderRadius:
+                              BorderRadius.circular(screenWidth * 0.02),
                           child: Image.asset(
                             'assets/images/estudante.png',
                           ),
@@ -53,14 +67,14 @@ class InitialScreen extends StatelessWidget {
                     'Estudante',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: MediaQuery.of(context).size.height * 0.02),
+                        fontSize: screenHeight * 0.02),
                   ),
                 ],
               ),
               Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
+                    height: screenHeight * 0.2,
                     child: Padding(
                       padding: EdgeInsets.all(myMargem),
                       child: InkWell(
@@ -71,8 +85,8 @@ class InitialScreen extends StatelessWidget {
                                   builder: (context) => const TeacherScreen()));
                         },
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              MediaQuery.of(context).size.width * 0.02),
+                          borderRadius:
+                              BorderRadius.circular(screenWidth * 0.02),
                           child: Image.asset(
                             'assets/images/educador.png',
                           ),
@@ -84,7 +98,7 @@ class InitialScreen extends StatelessWidget {
                     'Educador',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: MediaQuery.of(context).size.height * 0.02),
+                        fontSize: screenHeight * 0.02),
                   ),
                 ],
               )

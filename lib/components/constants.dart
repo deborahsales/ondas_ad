@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 const Color myGray = Color(0xFFD7D7D7);
 const Color myBlue = Color(0xFF09BCD1);
 const Color myPurple = Color(0xFF963992);
+const Color myWhite = Colors.white;
+const Color myBlack = Colors.black;
+const Color myTransparent = Color.fromARGB(0, 255, 255, 255);
+const Color myTransparentWhite = Color.fromRGBO(255, 255, 255, 0.8);
 
 double myMargem = 15;
 double myMargem2 = 10;
+double screenHeight = 0;
+double screenWidth = 0;
 
 String ondas1Caderno1e2 =
     'https://drive.google.com/u/0/uc?id=1L76e4QN_EtGQ78MWQf9uPVBxnVXCk2lP&export=download';

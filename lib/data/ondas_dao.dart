@@ -70,11 +70,11 @@ class OndasDao {
   static const String _table3Name = 'habilidadeTable';
 
   Future<void> insertDataFromCSV() async {
-
     final Database database = await getDatabase();
 
     final String csvString = await rootBundle.loadString('assets/ondas_bd.csv');
-    final List<List<dynamic>> csvData = const CsvToListConverter().convert(csvString);
+    final List<List<dynamic>> csvData =
+        const CsvToListConverter().convert(csvString);
     var itemExists = await database.query(_tableName);
 
     if (itemExists.isEmpty) {
@@ -94,8 +94,10 @@ class OndasDao {
       });
     }
 
-    final String csvString2 = await rootBundle.loadString('assets/componente_bd.csv');
-    final List<List<dynamic>> csvData2 = const CsvToListConverter().convert(csvString2);
+    final String csvString2 =
+        await rootBundle.loadString('assets/componente_bd.csv');
+    final List<List<dynamic>> csvData2 =
+        const CsvToListConverter().convert(csvString2);
     var itemExists2 = await database.query(_table2Name);
 
     if (itemExists2.isEmpty) {
@@ -120,8 +122,10 @@ class OndasDao {
       });
     }
 
-    final String csvString3 = await rootBundle.loadString('assets/habilidade_bd.csv');
-    final List<List<dynamic>> csvData3 = const CsvToListConverter().convert(csvString3);
+    final String csvString3 =
+        await rootBundle.loadString('assets/habilidade_bd.csv');
+    final List<List<dynamic>> csvData3 =
+        const CsvToListConverter().convert(csvString3);
     var itemExists3 = await database.query(_table3Name);
 
     if (itemExists3.isEmpty) {
@@ -152,8 +156,7 @@ class OndasDao {
   Future<List<Resultado>> getComponenteAno(
       String componente, String anoPlanilha) async {
     final Database database = await getDatabase();
-    final List<Map<String, dynamic>> result = await database.query(
-        _table2Name,
+    final List<Map<String, dynamic>> result = await database.query(_table2Name,
         where: '$_componente = ? AND $_anoPlanilha = ?',
         whereArgs: [componente, anoPlanilha]);
     return toListComponenteAno(result);
@@ -168,8 +171,7 @@ class OndasDao {
 
   Future<String> getDescricao(String habilidade) async {
     final Database database = await getDatabase();
-    final List<Map<String, dynamic>> result = await database.query(
-        _table3Name,
+    final List<Map<String, dynamic>> result = await database.query(_table3Name,
         columns: [_descricao],
         distinct: true,
         where: '$_habilidade = ?',
@@ -181,8 +183,7 @@ class OndasDao {
   Future<List<VideoAula>> getModuloAno(
       String modulo, String ano, String image) async {
     final Database database = await getDatabase();
-    final List<Map<String, dynamic>> result = await database.query(
-        _tableName,
+    final List<Map<String, dynamic>> result = await database.query(_tableName,
         where: '$_versao = ? AND $_tipo = ? AND $_ano = ? AND $_modulo = ?',
         whereArgs: ['2.0', 'video', ano, modulo]);
     return toListVideo(result, image);
@@ -191,14 +192,14 @@ class OndasDao {
   Future<List<Podcast>> getPodcast(
       String versao, String ano, String modulo, String image) async {
     final Database database = await getDatabase();
-    final List<Map<String, dynamic>> result = await database.query(
-        _tableName,
+    final List<Map<String, dynamic>> result = await database.query(_tableName,
         where: '$_versao = ? AND $_ano = ? AND $_tipo = ? AND $_modulo = ?',
         whereArgs: [versao, ano, 'podcast', modulo]);
     return toListPodcast(result, image);
   }
 
-  List<Resultado> toListComponenteAno(List<Map<String, dynamic>> mapaResultados) {
+  List<Resultado> toListComponenteAno(
+      List<Map<String, dynamic>> mapaResultados) {
     final List<Resultado> resultados = [];
     for (Map<String, dynamic> linha in mapaResultados) {
       String habilidade = linha['habilidade'];

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:lottie/lottie.dart';
-
 import '../components/constants.dart';
 import '../components/pdf_api.dart';
 
@@ -50,9 +49,9 @@ class _PDFViewerScreenState extends State<PDFViewerScreen> {
             ? null
             : pages >= 2
                 ? BottomAppBar(
-                    color: Colors.white,
+                    color: myWhite,
                     padding: EdgeInsets.zero,
-                    height: MediaQuery.of(context).size.height * 0.1,
+                    height: screenHeight * 0.1,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -62,7 +61,7 @@ class _PDFViewerScreenState extends State<PDFViewerScreen> {
                           },
                           icon: Icon(
                             Icons.home,
-                            size: MediaQuery.of(context).size.width * 0.08,
+                            size: screenWidth * 0.08,
                           ),
                         ),
                         Center(
@@ -75,7 +74,7 @@ class _PDFViewerScreenState extends State<PDFViewerScreen> {
                           },
                           icon: Icon(
                             Icons.chevron_left,
-                            size: MediaQuery.of(context).size.width * 0.08,
+                            size: screenWidth * 0.08,
                           ),
                         ),
                         IconButton(
@@ -86,7 +85,7 @@ class _PDFViewerScreenState extends State<PDFViewerScreen> {
                           },
                           icon: Icon(
                             Icons.chevron_right,
-                            size: MediaQuery.of(context).size.width * 0.08,
+                            size: screenWidth * 0.08,
                           ),
                         ),
                       ],
@@ -98,8 +97,9 @@ class _PDFViewerScreenState extends State<PDFViewerScreen> {
                 title: Text(
                   widget.name,
                 ),
+                backgroundColor: myWhite,
               ),
-        backgroundColor: Colors.white,
+        backgroundColor: myWhite,
         body: filePath == null
             ? Center(
                 child: Column(
@@ -122,8 +122,7 @@ class _PDFViewerScreenState extends State<PDFViewerScreen> {
                     padding: EdgeInsets.all(myMargem * 3),
                     child: Text(
                       'Download em andamento...',
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height * 0.03),
+                      style: TextStyle(fontSize: screenHeight * 0.025),
                     ),
                   ),
                 ],

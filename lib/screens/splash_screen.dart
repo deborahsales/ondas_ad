@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(const Duration(milliseconds: 1500), () {
+    Future.delayed(const Duration(milliseconds: 2000), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -36,25 +36,20 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [myBlue, Colors.white],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [myBlue, myWhite],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.02),
-                child: Image.asset(
-                  'assets/images/logos.png',
-                ),
-              ),
-            ],
-          )),
+        ),
+        child: Center(
+          child: Image.asset(
+            'assets/images/logos.png'
+          ),
+        ),
+      ),
     );
   }
 }

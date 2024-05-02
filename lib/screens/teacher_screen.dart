@@ -9,13 +9,11 @@ class TeacherScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     double aspectRatio = 2068.0 / 1748.0;
     double proportionalImageHeight = screenWidth * aspectRatio;
 
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: myWhite,
         body: ListView(
           children: [
             Column(
@@ -27,8 +25,8 @@ class TeacherScreen extends StatelessWidget {
                   IconButton(
                     icon: Icon(
                       Icons.arrow_back,
-                      color: Colors.white,
-                      size: MediaQuery.of(context).size.height * 0.035,
+                      color: myWhite,
+                      size: screenHeight * 0.035,
                     ),
                     onPressed: () {
                       Navigator.pop(context);
@@ -46,9 +44,9 @@ class TeacherScreen extends StatelessWidget {
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
                             colors: [
-                              Colors.white,
-                              Colors.white,
-                              Color.fromARGB(0, 255, 255, 255),
+                              myWhite,
+                              myWhite,
+                              myTransparent,
                             ],
                           ),
                         ),
@@ -97,8 +95,8 @@ class TeacherScreen extends StatelessWidget {
                                               )));
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      MediaQuery.of(context).size.width * 0.02),
+                                  borderRadius:
+                                      BorderRadius.circular(screenWidth * 0.02),
                                   child: Image.asset(
                                     'assets/images/ondas_1_apoio_1_e_2.png',
                                   ),
@@ -122,8 +120,8 @@ class TeacherScreen extends StatelessWidget {
                                               )));
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      MediaQuery.of(context).size.width * 0.02),
+                                  borderRadius:
+                                      BorderRadius.circular(screenWidth * 0.02),
                                   child: Image.asset(
                                     'assets/images/ondas_1_apoio_3.png',
                                   ),
@@ -148,8 +146,8 @@ class TeacherScreen extends StatelessWidget {
                                               )));
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      MediaQuery.of(context).size.width * 0.02),
+                                  borderRadius:
+                                      BorderRadius.circular(screenWidth * 0.02),
                                   child: Image.asset(
                                     'assets/images/ondas_1_apoio_4_e_5.png',
                                   ),
@@ -199,8 +197,8 @@ class TeacherScreen extends StatelessWidget {
                                               )));
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      MediaQuery.of(context).size.width * 0.02),
+                                  borderRadius:
+                                      BorderRadius.circular(screenWidth * 0.02),
                                   child: Image.asset(
                                     'assets/images/ondas_2_apoio_1_e_2.png',
                                   ),
@@ -224,8 +222,8 @@ class TeacherScreen extends StatelessWidget {
                                               )));
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      MediaQuery.of(context).size.width * 0.02),
+                                  borderRadius:
+                                      BorderRadius.circular(screenWidth * 0.02),
                                   child: Image.asset(
                                     'assets/images/ondas_2_apoio_3.png',
                                   ),
@@ -250,8 +248,8 @@ class TeacherScreen extends StatelessWidget {
                                               )));
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      MediaQuery.of(context).size.width * 0.02),
+                                  borderRadius:
+                                      BorderRadius.circular(screenWidth * 0.02),
                                   child: Image.asset(
                                     'assets/images/ondas_2_apoio_4_e_5.png',
                                   ),
@@ -293,46 +291,46 @@ class TeacherScreen extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const ComponenteScreen()));
+                                          builder: (context) =>
+                                              const ComponenteScreen()));
                                 },
-                                child: Stack(
-                                  children: [ClipRRect(
+                                child: Stack(children: [
+                                  ClipRRect(
                                     borderRadius: BorderRadius.circular(
-                                        MediaQuery.of(context).size.width * 0.02),
+                                        screenWidth * 0.02),
                                     child: Image.asset(
                                       'assets/images/busca_componente.png',
                                     ),
                                   ),
-                                    Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: proportionalImageHeight * 0.23,
-                                        ),
-                                        SizedBox(
-                                          width:
-                                          (proportionalImageHeight * 0.39) *
-                                              aspectRatio,
-                                          child: Center(
-                                            child: Text(
-                                              'Componente | Ano',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize:
-                                                  proportionalImageHeight *
-                                                      0.045,
-                                                  color: Colors.white),
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.center,
-                                            ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: proportionalImageHeight * 0.23,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            (proportionalImageHeight * 0.39) *
+                                                aspectRatio,
+                                        child: Center(
+                                          child: Text(
+                                            'Componente | Ano',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize:
+                                                    proportionalImageHeight *
+                                                        0.045,
+                                                color: myWhite),
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
                                           ),
-                                        )
-                                      ],
-                                    ),
-                                  ]
-                                ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ]),
                               ),
                             ),
                             Padding(
@@ -345,46 +343,46 @@ class TeacherScreen extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const HabilidadeScreen()));
+                                          builder: (context) =>
+                                              const HabilidadeScreen()));
                                 },
-                                child: Stack(
-                                    children: [ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                          MediaQuery.of(context).size.width * 0.02),
-                                      child: Image.asset(
-                                        'assets/images/busca_bncc.png',
-                                      ),
+                                child: Stack(children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        screenWidth * 0.02),
+                                    child: Image.asset(
+                                      'assets/images/busca_bncc.png',
                                     ),
-                                      Column(
-                                        crossAxisAlignment:
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
                                         CrossAxisAlignment.center,
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            height: proportionalImageHeight * 0.23,
-                                          ),
-                                          SizedBox(
-                                            width:
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: proportionalImageHeight * 0.23,
+                                      ),
+                                      SizedBox(
+                                        width:
                                             (proportionalImageHeight * 0.39) *
                                                 aspectRatio,
-                                            child: Center(
-                                              child: Text(
-                                                'Habilidade | BNCC',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize:
+                                        child: Center(
+                                          child: Text(
+                                            'Habilidade | BNCC',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize:
                                                     proportionalImageHeight *
                                                         0.045,
-                                                    color: Colors.white),
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ]
-                                ),
+                                                color: myWhite),
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ]),
                               ),
                             ),
                             SizedBox(
@@ -393,7 +391,9 @@ class TeacherScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: myMargem,),
+                      SizedBox(
+                        height: myMargem,
+                      ),
                     ],
                   ),
                 ]),
