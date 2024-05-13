@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ondas_ad/components/constants.dart';
-import 'package:ondas_ad/screens/initial_screen.dart';
+import 'package:ondas_ad/screens/splash_screen.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class TittleScreen extends StatefulWidget {
+  const TittleScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<TittleScreen> createState() => _TittleScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
+class _TittleScreenState extends State<TittleScreen>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const InitialScreen(),
+            builder: (context) => const SplashScreen(),
           ));
     });
   }
@@ -40,9 +40,12 @@ class _SplashScreenState extends State<SplashScreen>
           color: myBlue,
         ),
         child: Center(
+            child: Padding(
+          padding: EdgeInsets.all(myMargem * 2),
           child: Image.asset(
-            'assets/images/logos.png'
+              'assets/images/titulo.png'
           ),
+        ),
         ),
       ),
     );

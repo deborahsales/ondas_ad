@@ -150,7 +150,7 @@ class StudentScreen extends StatelessWidget {
                                           builder: (context) => PDFViewerScreen(
                                                 url: ondas1Caderno1e2,
                                                 name: "Ondas 1.0 - 1º e 2º ano",
-                                                swipe: true,
+                                                swipe: false,
                                               )));
                                 },
                                 child: ClipRRect(
@@ -175,7 +175,7 @@ class StudentScreen extends StatelessWidget {
                                           builder: (context) => PDFViewerScreen(
                                                 url: ondas1Caderno3,
                                                 name: "Ondas 1.0 - 3º ano",
-                                                swipe: true,
+                                                swipe: false,
                                               )));
                                 },
                                 child: ClipRRect(
@@ -200,7 +200,7 @@ class StudentScreen extends StatelessWidget {
                                           builder: (context) => PDFViewerScreen(
                                                 url: ondas1Caderno4e5,
                                                 name: "Ondas 1.0 - 3º ano",
-                                                swipe: true,
+                                                swipe: false,
                                               )));
                                 },
                                 child: ClipRRect(
@@ -300,6 +300,65 @@ class StudentScreen extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
+                                        const OndasPodcastScreen(
+                                          imgTopo:
+                                          'assets/images/topo_ondas_2_4_e_5.png',
+                                          miniatura:
+                                          'assets/images/capa_podcast_2.png',
+                                          versao: '2.0',
+                                        ),
+                                      ));
+                                },
+                                child: Stack(children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        screenWidth * 0.02),
+                                    child: Image.asset(
+                                      'assets/images/ondas_2_podcast.png',
+                                    ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: proportionalImageHeight * 0.26,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                        (proportionalImageHeight * 0.225) *
+                                            aspectRatio,
+                                        child: Center(
+                                          child: Text(
+                                            'Podcasts',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize:
+                                                proportionalImageHeight *
+                                                    0.045,
+                                                color: myWhite),
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ]),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  top: myMargem2,
+                                  bottom: myMargem2,
+                                  left: myMargem),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
                                             const OndasHistScreen(
                                           imgTopo:
                                               'assets/images/topo_historias.png',
@@ -363,7 +422,7 @@ class StudentScreen extends StatelessWidget {
                                           builder: (context) => PDFViewerScreen(
                                                 url: ondas2Caderno1e2,
                                                 name: "Ondas 2.0 - 1º e 2º ano",
-                                                swipe: true,
+                                                swipe: false,
                                               )));
                                 },
                                 child: ClipRRect(
@@ -388,7 +447,7 @@ class StudentScreen extends StatelessWidget {
                                           builder: (context) => PDFViewerScreen(
                                                 url: ondas2Caderno3,
                                                 name: "Ondas 2.0 - 3º ano",
-                                                swipe: true,
+                                                swipe: false,
                                               )));
                                 },
                                 child: ClipRRect(
@@ -413,7 +472,7 @@ class StudentScreen extends StatelessWidget {
                                           builder: (context) => PDFViewerScreen(
                                                 url: ondas2Caderno4e5,
                                                 name: "Ondas 2.0 - 3º ano",
-                                                swipe: true,
+                                                swipe: false,
                                               )));
                                 },
                                 child: ClipRRect(

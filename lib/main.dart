@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ondas_ad/components/constants.dart';
 import 'package:ondas_ad/data/ondas_dao.dart';
-import 'package:ondas_ad/screens/splash_screen.dart';
+import 'package:ondas_ad/screens/tittle_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: myPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: const TittleScreen(),
     );
   }
 }
