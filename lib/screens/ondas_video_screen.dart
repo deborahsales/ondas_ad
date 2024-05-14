@@ -14,14 +14,12 @@ class OndasVideoScreen extends StatefulWidget {
 class _OndasVideoScreenState extends State<OndasVideoScreen> {
   String? dropdownModuloValue = OndasDao.moduloList.first;
   String? dropdownAnoValue = OndasDao.anoList.first;
-  bool _buscar = false;
   String anoFormatado = "";
   String imgTopo = 'assets/images/topo_ondas_2_1_e_2.png';
   String imgMiniatura = 'assets/images/miniatura_1_e_2_ano.png';
 
   void _atualizarBusca() {
     setState(() {
-      _buscar = true;
       imgTopo = dropdownAnoValue == '1º e 2º anos'
           ? 'assets/images/topo_ondas_2_1_e_2.png'
           : dropdownAnoValue == '3º ano'

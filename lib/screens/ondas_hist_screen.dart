@@ -23,13 +23,6 @@ class OndasHistScreen extends StatefulWidget {
 
 class _OndasHistScreen extends State<OndasHistScreen> {
   String? dropdownValue = OndasDao.moduloList.first;
-  bool _buscar = false;
-
-  void _atualizarBusca() {
-    setState(() {
-      _buscar = true;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +135,6 @@ class _OndasHistScreen extends State<OndasHistScreen> {
                                 setState(
                                   () {
                                     dropdownValue = selectedValue;
-                                    _atualizarBusca();
                                   },
                                 );
                               },

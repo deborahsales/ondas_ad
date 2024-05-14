@@ -21,13 +21,6 @@ class OndasPodcastScreen extends StatefulWidget {
 
 class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
   String? dropdownValue = OndasDao.moduloList.first;
-  bool _buscar = false;
-
-  void _atualizarBusca() {
-    setState(() {
-      _buscar = true;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +129,6 @@ class _OndasPodcastScreenState extends State<OndasPodcastScreen> {
                                 setState(
                                   () {
                                     dropdownValue = selectedValue;
-                                    _atualizarBusca();
                                   },
                                 );
                               },
